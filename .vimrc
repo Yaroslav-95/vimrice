@@ -13,15 +13,15 @@ let mapleader =" "
     set guicursor=n-v-c-sm:hor20,i-ci-ve:ver25,r-cr-o:block
     set cursorline
     let g:gruvbox_italic=1
-    let g:airline_theme='bubblegum'
+    let g:airline_theme='ultramar'
     let g:airline#extensions#tabline#enabled = 1
-    colorscheme gruvbox
+    colorscheme ultramar
 "	set encoding=utf-8
 	set number
 
 "   airline
-    let g:airline_left_sep=''
-    let g:airline_right_sep=''
+    let g:airline_left_sep=''
+    let g:airline_right_sep=''
     let g:airline_inactive_collapse=1
 
 " indentation
