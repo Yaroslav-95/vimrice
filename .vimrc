@@ -8,26 +8,26 @@ let mapleader =" "
 	set nocompatible
 	filetype plugin on
 	syntax on
-    set background=dark
-    set termguicolors
-    set guicursor=n-v-c-sm:hor20,i-ci-ve:ver25,r-cr-o:block
-    set cursorline
-    let g:gruvbox_italic=1
-    let g:airline_theme='ultramar'
-    let g:airline#extensions#tabline#enabled = 1
-    colorscheme ultramar
+  set background=dark
+  set termguicolors
+  set guicursor=n-v-c-sm:hor20,i-ci-ve:ver25,r-cr-o:block
+  set cursorline
+  let g:gruvbox_italic=1
+  let g:airline_theme='ultramar'
+  let g:airline#extensions#tabline#enabled = 1
+  colorscheme ultramar
 "	set encoding=utf-8
 	set number
 
 "   airline
-    let g:airline_left_sep=''
-    let g:airline_right_sep=''
-    let g:airline_inactive_collapse=1
+  let g:airline_left_sep=''
+  let g:airline_right_sep=''
+  let g:airline_inactive_collapse=1
 
 " indentation
 	filetype plugin indent on
-	set tabstop=4
-	set shiftwidth=4
+	set tabstop=2
+	set shiftwidth=2
 	set expandtab
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
@@ -70,16 +70,16 @@ let mapleader =" "
 	vnoremap <C-c> "*y :let @+=@*<CR>
 
 " Copy to clipboard
-    vnoremap  <leader>y  "+y
-    nnoremap  <leader>Y  "+yg_
-    nnoremap  <leader>y  "+y
-    nnoremap  <leader>yy  "+yy
+  vnoremap  <leader>y  "+y
+  nnoremap  <leader>Y  "+yg_
+  nnoremap  <leader>y  "+y
+  nnoremap  <leader>yy  "+yy
 
 " Paste from clipboard
-    nnoremap <leader>p "+p
-    nnoremap <leader>P "+P
-    vnoremap <leader>p "+p
-    vnoremap <leader>P "+P
+  nnoremap <leader>p "+p
+  nnoremap <leader>P "+P
+  vnoremap <leader>p "+p
+  vnoremap <leader>P "+P
 
 " Enable Goyo by default for mutt writting
 	" Goyo's width will be the line limit in mutt.
@@ -89,7 +89,7 @@ let mapleader =" "
 " Enable autocompletion:
 	set wildmode=longest,list,full
 	set wildmenu
-    imap <tab> <C-N>
+  imap <tab> <C-N>
 
 " Automatically deletes all tralling whitespace on save.
 	autocmd BufWritePre * %s/\s\+$//e
@@ -104,11 +104,11 @@ let mapleader =" "
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Join line with ctrl
-    nnoremap <M-j> J
+  nnoremap <M-j> J
 
 " Easier tab navigation (similar to qutebrowser)
-    nnoremap J :tabn<cr>
-    nnoremap K :tabp<cr>
+  nnoremap J :tabn<cr>
+  nnoremap K :tabp<cr>
 
 " C-T for new tab
 	nnoremap <C-t> :tabe<Space>
@@ -124,12 +124,12 @@ let mapleader =" "
 	inoremap wj <Esc>
 
 " latex pdf viewer
-    let g:livepreview_previewer = 'zathura'
+  let g:livepreview_previewer = 'zathura'
 
 " To avoid switching between keyboards
-    set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+  set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " neomake
-    let g:neomake_javascript_enabled_makers = ['eslint']
-    let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-    call neomake#configure#automake('w')
+  let g:neomake_javascript_enabled_makers = ['eslint']
+  let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+  call neomake#configure#automake('w')
