@@ -48,23 +48,17 @@ let mapleader =" "
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
 
-" Open corresponding.pdf
-	map <leader>p :!mupdf <c-r>%<backspace><backspace><backspace>pdf &<CR><CR>
-
 " Compile document
-	map <leader>c :!compiler <c-r>%<CR>
+	map <leader>c :!doccompiler <c-r>%<CR>
 
-" Interpret .md files, etc. as .markdown
-	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+" View live preview of document
+  map <leader>v :LLPStartPreview<CR>
 
 " Make calcurse notes markdown compatible:
 	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 
 " Spell-check set to F2:
 	map <F2> :setlocal spell! spelllang=en_us,es,ru<CR>
-
-" Use urlview to choose and open a url:
-	:noremap <leader>u :w<Home>silent <End> !urlview<CR>
 
 " Copy selected text to system clipboard (requires gvim installed):
 	vnoremap <C-c> "*y :let @+=@*<CR>
@@ -81,11 +75,6 @@ let mapleader =" "
   vnoremap <leader>p "+p
   vnoremap <leader>P "+P
 
-" Enable Goyo by default for mutt writting
-	" Goyo's width will be the line limit in mutt.
-	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=72
-	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
-
 " Enable autocompletion:
 	set wildmode=longest,list,full
 	set wildmenu
@@ -94,16 +83,13 @@ let mapleader =" "
 " Automatically deletes all tralling whitespace on save.
 	autocmd BufWritePre * %s/\s\+$//e
 
-" When shortcut files are updated, renew bash and ranger configs with new material:
-	autocmd BufWritePost ~/.scripts/folders,~/.scripts/configs !bash ~/.scripts/shortcuts.sh
-
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
-	autocmd VimLeave *.tex !texclear
+	autocmd VimLeave *.tex !texclear %
 
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Join line with ctrl
+" Join line with alt
   nnoremap <M-j> J
 
 " Easier tab navigation (similar to qutebrowser)
