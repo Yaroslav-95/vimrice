@@ -104,6 +104,8 @@ let mapleader =" "
 	vnoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
 	map <Space><Tab> <Esc>/<++><Enter>"_c4l
 	inoremap ;gui <++>
+	inoremap жпгш <++>
+	inoremap ñgui <++>
 
 " For normal mode when in terminals (in X I have caps mapped to esc, this replaces it when I don't have X)
 	inoremap jw <Esc>
