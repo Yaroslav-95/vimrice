@@ -15,6 +15,7 @@ let mapleader =" "
   colorscheme ultramar
 "	set encoding=utf-8
 	set number
+	set relativenumber
 
 "   airline
   let g:airline_left_sep=''
@@ -33,6 +34,9 @@ let mapleader =" "
 
 " To avoid switching between keyboards
   set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯХЪБЮ;ABCDEFGHIJKLMNOPQRSTUVWXYZ{}<>,фисвуапршолдьтщзйкыегмцчняхъэ;abcdefghijklmnopqrstuvwxyz[]'
+
+" Toggle relative line numbers
+  map <leader>r :set invrelativenumber<CR>
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
