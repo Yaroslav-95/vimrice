@@ -1,6 +1,22 @@
 
 let mapleader =" "
 
+" Check if vim-plug is installed, otherwise download and install
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.local/share/nvim/site/plugged')
+Plug 'junegunn/goyo.vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'jreybert/vimagit'
+Plug 'tpope/vim-commentary'
+Plug 'neomake/neomake'
+Plug 'jamessan/vim-gnupg'
+call plug#end()
+
 " Some basics:
 	set nocompatible
 	filetype plugin on
@@ -9,18 +25,18 @@ let mapleader =" "
   set termguicolors
   set guicursor=n-v-c-sm:hor20,i-ci-ve:ver25,r-cr-o:block
   set cursorline
-  let g:gruvbox_italic=1
-  let g:airline_theme='ultramar'
-  let g:airline#extensions#tabline#enabled = 1
+  let g:ultramar_italic=1
+  "let g:airline_theme='ultramar'
+  "let g:airline#extensions#tabline#enabled = 1
   colorscheme ultramar
 "	set encoding=utf-8
 	set number
 	set relativenumber
 
 "   airline
-  let g:airline_left_sep=''
-  let g:airline_right_sep=''
-  let g:airline_inactive_collapse=1
+  "let g:airline_left_sep=''
+  "let g:airline_right_sep=''
+  "let g:airline_inactive_collapse=1
 
 " default indentation
 	filetype plugin indent on
@@ -137,9 +153,6 @@ let mapleader =" "
 " For normal mode when can't remap caps to escape
 	inoremap jw <Esc>
 	inoremap wj <Esc>
-
-" latex pdf viewer
-  let g:livepreview_previewer = 'zathura'
 
 " neomake
   let g:neomake_javascript_enabled_makers = ['eslint']
