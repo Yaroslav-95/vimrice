@@ -47,6 +47,7 @@ call plug#end()
   set statusline+=%#CursorLineNR#
   set statusline+=%{StatuslineGit()}
   set statusline+=%#StatusLine#
+  set statusline+=%<
   set statusline+=\ %f%r%m
   set statusline+=%=
   set statusline+=\ %l:%c/%L
