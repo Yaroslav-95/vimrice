@@ -19,7 +19,10 @@ Plug 'neomake/neomake'
 Plug 'jamessan/vim-gnupg'
 Plug 'majutsushi/tagbar'
 Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 call plug#end()
 
 " Some basics:
@@ -36,6 +39,15 @@ call plug#end()
 	set number
 	set relativenumber
   set scrolloff=5
+
+" Set screen title
+let &titlestring = "vim - " . expand("%:t")
+if &term == "screen"
+  set t_ts=^[k
+  set t_fs=^[\
+endif
+set title
+au BufEnter * let &titlestring = "vim - " . expand("%t")
 
 " Functions for git branch name on statusline
   function! GitBranch()
@@ -175,11 +187,26 @@ call plug#end()
 	inoremap jw <Esc>
 	inoremap wj <Esc>
 
+" SuperTab
+  let g:SuperTabDefaultCompletionType = "context"
+  let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
 " NERDTree
 	map <leader>f :NERDTreeToggle<CR>
 
 " Tagbar
 	map <F3> :TagbarToggle<CR>
+
+" LSP
+  let g:LanguageClient_serverCommands = {
+      \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
+      \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+      \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+      \ 'python': ['/usr/local/bin/pyls'],
+      \ }
+
+  nmap <F4> <Plug>(lcn-menu)
+  nmap <silent> gd <Plug>(lcn-definition)
 
 " neomake
   let g:neomake_javascript_enabled_makers = ['eslint']
