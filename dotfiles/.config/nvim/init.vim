@@ -13,6 +13,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdtree'
+Plug 'ervandew/supertab'
 Plug 'neomake/neomake'
 Plug 'jamessan/vim-gnupg'
 Plug 'majutsushi/tagbar'
@@ -24,6 +26,7 @@ call plug#end()
 	set nocompatible
 	filetype plugin on
 	syntax on
+  set omnifunc=syntaxcomplete#Complete
   set background=dark
   set termguicolors
   set guicursor=n-v-c-sm:hor20,i-ci-ve:ver25,r-cr-o:block
@@ -171,6 +174,9 @@ call plug#end()
 " For normal mode when can't remap caps to escape
 	inoremap jw <Esc>
 	inoremap wj <Esc>
+
+" NERDTree
+	map <leader>f :NERDTreeToggle<CR>
 
 " Tagbar
 	map <F3> :TagbarToggle<CR>
