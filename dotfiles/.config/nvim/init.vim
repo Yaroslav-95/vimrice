@@ -15,6 +15,8 @@ Plug 'jreybert/vimagit'
 Plug 'tpope/vim-commentary'
 Plug 'neomake/neomake'
 Plug 'jamessan/vim-gnupg'
+Plug 'majutsushi/tagbar'
+Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 call plug#end()
 
@@ -169,6 +171,9 @@ call plug#end()
 " For normal mode when can't remap caps to escape
 	inoremap jw <Esc>
 	inoremap wj <Esc>
+
+" Tagbar
+	map <F3> :TagbarToggle<CR>
 
 " neomake
   let g:neomake_javascript_enabled_makers = ['eslint']
