@@ -15,6 +15,7 @@ Plug 'jreybert/vimagit'
 Plug 'tpope/vim-commentary'
 Plug 'neomake/neomake'
 Plug 'jamessan/vim-gnupg'
+Plug 'racer-rust/vim-racer'
 call plug#end()
 
 " Some basics:
@@ -26,17 +27,35 @@ call plug#end()
   set guicursor=n-v-c-sm:hor20,i-ci-ve:ver25,r-cr-o:block
   set cursorline
   let g:ultramar_italic=1
-  "let g:airline_theme='ultramar'
-  "let g:airline#extensions#tabline#enabled = 1
   colorscheme ultramar
-"	set encoding=utf-8
 	set number
 	set relativenumber
+  set scrolloff=5
 
-"   airline
-  "let g:airline_left_sep=''
-  "let g:airline_right_sep=''
-  "let g:airline_inactive_collapse=1
+" Functions for git branch name on statusline
+  function! GitBranch()
+    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+  endfunction
+  function! StatuslineGit()
+    let l:branchname = GitBranch()
+    return strlen(l:branchname) > 0?'   '.l:branchname.' ':''
+  endfunction
+
+" Statusline
+  let laststatus=2
+  set statusline=
+  set statusline+=%#CursorLineNR#
+  set statusline+=%{StatuslineGit()}
+  set statusline+=%#StatusLine#
+  set statusline+=\ %f%r%m
+  set statusline+=%=
+  set statusline+=\ %l:%c/%L
+  set statusline+=\ 
+  set statusline+=%#StatusLineNC#
+  set statusline+=\ %Y
+  set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+  set statusline+=\[%{&fileformat}\]
+  set statusline+=\ 
 
 " default indentation
 	filetype plugin indent on
@@ -75,9 +94,6 @@ call plug#end()
 " with russian layout
 	map <leader>с :!doccompiler <c-r>%<CR>
 
-" View live preview of document
-  map <leader>v :LLPStartPreview<CR>
-
 " Spell-check set to F2:
 	map <F2> :setlocal spell! spelllang=en_us,es,ru<CR>
 
@@ -109,12 +125,11 @@ call plug#end()
   vnoremap <leader>З "+P
 
 " Enable autocompletion:
-	set wildmode=longest,list,full
+	set wildmode=list:longest,full
 	set wildmenu
-  imap <tab> <C-N>
 
 " Automatically deletes all tralling whitespace on save.
-	autocmd BufWritePre * %s/\s\+$//e
+	"autocmd BufWritePre * %s/\s\+$//e
 
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
