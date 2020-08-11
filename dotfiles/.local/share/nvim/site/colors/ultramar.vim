@@ -2,9 +2,10 @@
 " File: ultramar.vim
 " Description: Ultramar color scheme for vim
 " Author: Yaroslav de la Peña Smirnov <contact@yaroslavps.com>
-" Source: https://github.com/Yaroslav-95/ultramar
-" Last Modified: 14 Nov 2019
+" Source: https://github.com/Yaroslav-95/vimrice
+" Last Modified: 11 Aug 2020
 " -----------------------------------------------------------------------------
+" Based on the gruvbox colorscheme
 
 " Supporting code -------------------------------------------------------------
 " Initialisation: {{{
@@ -88,9 +89,9 @@ let s:palette = {}
 " fill it with absolute colors
 let s:palette.dark0_hard  = ['#1d2021', 234]     " 29-32-33
 let s:palette.dark0       = ['#1b1e25', 235]     " 40-40-40
-let s:palette.dark0_soft  = ['#3b4252', 236]     " 50-48-47
-let s:palette.dark1       = ['#3b4252', 237]     " 60-56-54
-let s:palette.dark2       = ['#434c5e', 239]     " 80-73-69
+let s:palette.dark0_soft  = ['#252832', 236]     " 50-48-47
+let s:palette.dark1       = ['#252832', 237]     " 60-56-54
+let s:palette.dark2       = ['#3b4252', 239]     " 80-73-69
 let s:palette.dark3       = ['#434c5e', 241]     " 102-92-84
 let s:palette.dark4       = ['#697792', 243]     " 124-111-100
 let s:palette.dark4_256   = ['#697792', 243]     " 124-111-100
@@ -405,7 +406,7 @@ function! s:HL(group, fg, ...)
 
   let histring = [ 'hi', a:group,
         \ 'guifg=' . fg[0], 'ctermfg=' . fg[1],
-        \ 'guibg=none', 'ctermbg=' . bg[1],
+        \ 'guibg=' . bg[0], 'ctermbg=' . bg[1],
         \ 'gui=' . emstr[:-2], 'cterm=' . emstr[:-2]
         \ ]
 
@@ -418,42 +419,42 @@ function! s:HL(group, fg, ...)
 endfunction
 
 " }}}
-" Gruvbox Hi Groups: {{{
+" Ultramar Hi Groups: {{{
 
 " memoize common hi groups
-call s:HL('GruvboxFg0', s:fg0)
-call s:HL('GruvboxFg1', s:fg1)
-call s:HL('GruvboxFg2', s:fg2)
-call s:HL('GruvboxFg3', s:fg3)
-call s:HL('GruvboxFg4', s:fg4)
-call s:HL('GruvboxGray', s:gray)
-call s:HL('GruvboxBg0', s:bg0)
-call s:HL('GruvboxBg1', s:bg1)
-call s:HL('GruvboxBg2', s:bg2)
-call s:HL('GruvboxBg3', s:bg3)
-call s:HL('GruvboxBg4', s:bg4)
+call s:HL('UltramarFg0', s:fg0)
+call s:HL('UltramarFg1', s:fg1)
+call s:HL('UltramarFg2', s:fg2)
+call s:HL('UltramarFg3', s:fg3)
+call s:HL('UltramarFg4', s:fg4)
+call s:HL('UltramarGray', s:gray)
+call s:HL('UltramarBg0', s:bg0)
+call s:HL('UltramarBg1', s:bg1)
+call s:HL('UltramarBg2', s:bg2)
+call s:HL('UltramarBg3', s:bg3)
+call s:HL('UltramarBg4', s:bg4)
 
-call s:HL('GruvboxRed', s:red)
-call s:HL('GruvboxRedBold', s:red, s:none, s:bold)
-call s:HL('GruvboxGreen', s:green)
-call s:HL('GruvboxGreenBold', s:green, s:none, s:bold)
-call s:HL('GruvboxYellow', s:yellow)
-call s:HL('GruvboxYellowBold', s:yellow, s:none, s:bold)
-call s:HL('GruvboxBlue', s:blue)
-call s:HL('GruvboxBlueBold', s:blue, s:none, s:bold)
-call s:HL('GruvboxPurple', s:purple)
-call s:HL('GruvboxPurpleBold', s:purple, s:none, s:bold)
-call s:HL('GruvboxAqua', s:aqua)
-call s:HL('GruvboxAquaBold', s:aqua, s:none, s:bold)
-call s:HL('GruvboxOrange', s:orange)
-call s:HL('GruvboxOrangeBold', s:orange, s:none, s:bold)
+call s:HL('UltramarRed', s:red)
+call s:HL('UltramarRedBold', s:red, s:none, s:bold)
+call s:HL('UltramarGreen', s:green)
+call s:HL('UltramarGreenBold', s:green, s:none, s:bold)
+call s:HL('UltramarYellow', s:yellow)
+call s:HL('UltramarYellowBold', s:yellow, s:none, s:bold)
+call s:HL('UltramarBlue', s:blue)
+call s:HL('UltramarBlueBold', s:blue, s:none, s:bold)
+call s:HL('UltramarPurple', s:purple)
+call s:HL('UltramarPurpleBold', s:purple, s:none, s:bold)
+call s:HL('UltramarAqua', s:aqua)
+call s:HL('UltramarAquaBold', s:aqua, s:none, s:bold)
+call s:HL('UltramarOrange', s:orange)
+call s:HL('UltramarOrangeBold', s:orange, s:none, s:bold)
 
-call s:HL('GruvboxRedSign', s:red, s:sign_column, s:invert_signs)
-call s:HL('GruvboxGreenSign', s:green, s:sign_column, s:invert_signs)
-call s:HL('GruvboxYellowSign', s:yellow, s:sign_column, s:invert_signs)
-call s:HL('GruvboxBlueSign', s:blue, s:sign_column, s:invert_signs)
-call s:HL('GruvboxPurpleSign', s:purple, s:sign_column, s:invert_signs)
-call s:HL('GruvboxAquaSign', s:aqua, s:sign_column, s:invert_signs)
+call s:HL('UltramarRedSign', s:red, s:sign_column, s:invert_signs)
+call s:HL('UltramarGreenSign', s:green, s:sign_column, s:invert_signs)
+call s:HL('UltramarYellowSign', s:yellow, s:sign_column, s:invert_signs)
+call s:HL('UltramarBlueSign', s:blue, s:sign_column, s:invert_signs)
+call s:HL('UltramarPurpleSign', s:purple, s:sign_column, s:invert_signs)
+call s:HL('UltramarAquaSign', s:aqua, s:sign_column, s:invert_signs)
 
 " }}}
 
@@ -500,8 +501,8 @@ if version >= 703
   call s:HL('CursorLineNr', s:yellow, s:bg1)
 endif
 
-hi! link NonText GruvboxBg2
-hi! link SpecialKey GruvboxBg2
+hi! link NonText UltramarBg2
+hi! link SpecialKey UltramarBg2
 
 call s:HL('Visual',    s:none,  s:bg3, s:invert_selection)
 hi! link VisualNOS Visual
@@ -514,6 +515,11 @@ call s:HL('Underlined', s:blue, s:none, s:underline)
 call s:HL('StatusLine',   s:bg2, s:fg1, s:inverse)
 call s:HL('StatusLineNC', s:bg1, s:fg4, s:inverse)
 
+if version >= 700
+  au InsertEnter * call s:HL('StatusLine',   s:green, s:bg1, s:inverse)
+  au InsertLeave * call s:HL('StatusLine',   s:bg2, s:fg1, s:inverse)
+endif
+
 " The column separating vertically split windows
 call s:HL('VertSplit', s:bg3, s:vert_split)
 
@@ -521,21 +527,21 @@ call s:HL('VertSplit', s:bg3, s:vert_split)
 call s:HL('WildMenu', s:blue, s:bg2, s:bold)
 
 " Directory names, special names in listing
-hi! link Directory GruvboxGreenBold
+hi! link Directory UltramarGreenBold
 
 " Titles for output from :set all, :autocmd, etc.
-hi! link Title GruvboxGreenBold
+hi! link Title UltramarGreenBold
 
 " Error messages on the command line
-call s:HL('ErrorMsg',   s:bg0, s:red, s:bold)
+call s:HL('ErrorMsg',   s:red, s:bg0, s:bold)
 " More prompt: -- More --
-hi! link MoreMsg GruvboxYellowBold
+hi! link MoreMsg UltramarYellowBold
 " Current mode message: -- INSERT --
-hi! link ModeMsg GruvboxYellowBold
+hi! link ModeMsg UltramarYellowBold
 " 'Press enter' prompt and yes/no questions
-hi! link Question GruvboxOrangeBold
+hi! link Question UltramarOrangeBold
 " Warning messages
-hi! link WarningMsg GruvboxRedBold
+hi! link WarningMsg UltramarRedBold
 
 " }}}
 " Gutter: {{{
@@ -567,7 +573,7 @@ hi! link lCursor Cursor
 " Syntax Highlighting: {{{
 
 if g:ultramar_improved_strings == 0
-  hi! link Special GruvboxOrange
+  hi! link Special UltramarOrange
 else
   call s:HL('Special', s:orange, s:bg1, s:italicize_strings)
 endif
@@ -577,40 +583,40 @@ call s:HL('Todo', s:vim_fg, s:vim_bg, s:bold . s:italic)
 call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
 
 " Generic statement
-hi! link Statement GruvboxRed
+hi! link Statement UltramarRed
 " if, then, else, endif, swicth, etc.
-hi! link Conditional GruvboxRed
+hi! link Conditional UltramarRed
 " for, do, while, etc.
-hi! link Repeat GruvboxRed
+hi! link Repeat UltramarRed
 " case, default, etc.
-hi! link Label GruvboxRed
+hi! link Label UltramarRed
 " try, catch, throw
-hi! link Exception GruvboxRed
+hi! link Exception UltramarRed
 " sizeof, "+", "*", etc.
 hi! link Operator Normal
 " Any other keyword
-hi! link Keyword GruvboxRed
+hi! link Keyword UltramarRed
 
 " Variable name
-hi! link Identifier GruvboxBlue
+hi! link Identifier UltramarBlue
 " Function name
-hi! link Function GruvboxGreenBold
+hi! link Function UltramarGreenBold
 
 " Generic preprocessor
-hi! link PreProc GruvboxAqua
+hi! link PreProc UltramarAqua
 " Preprocessor #include
-hi! link Include GruvboxAqua
+hi! link Include UltramarAqua
 " Preprocessor #define
-hi! link Define GruvboxAqua
+hi! link Define UltramarAqua
 " Same as Define
-hi! link Macro GruvboxAqua
+hi! link Macro UltramarAqua
 " Preprocessor #if, #else, #endif, etc.
-hi! link PreCondit GruvboxAqua
+hi! link PreCondit UltramarAqua
 
 " Generic constant
-hi! link Constant GruvboxPurple
+hi! link Constant UltramarPurple
 " Character constant: 'c', '/n'
-hi! link Character GruvboxPurple
+hi! link Character UltramarPurple
 " String constant: "this is a string"
 if g:ultramar_improved_strings == 0
   call s:HL('String',  s:green, s:none, s:italicize_strings)
@@ -618,20 +624,20 @@ else
   call s:HL('String',  s:fg1, s:bg1, s:italicize_strings)
 endif
 " Boolean constant: TRUE, false
-hi! link Boolean GruvboxPurple
+hi! link Boolean UltramarPurple
 " Number constant: 234, 0xff
-hi! link Number GruvboxPurple
+hi! link Number UltramarPurple
 " Floating point constant: 2.3e10
-hi! link Float GruvboxPurple
+hi! link Float UltramarPurple
 
 " Generic type
-hi! link Type GruvboxYellow
+hi! link Type UltramarYellow
 " static, register, volatile, etc
-hi! link StorageClass GruvboxOrange
+hi! link StorageClass UltramarOrange
 " struct, union, enum, etc.
-hi! link Structure GruvboxAqua
+hi! link Structure UltramarAqua
 " typedef
-hi! link Typedef GruvboxYellow
+hi! link Typedef UltramarYellow
 
 " }}}
 " Completion Menu: {{{
@@ -748,23 +754,23 @@ let g:niji_light_colours = g:rbpt_colorpairs
 "}}}
 " GitGutter: {{{
 
-hi! link GitGutterAdd GruvboxGreenSign
-hi! link GitGutterChange GruvboxAquaSign
-hi! link GitGutterDelete GruvboxRedSign
-hi! link GitGutterChangeDelete GruvboxAquaSign
+hi! link GitGutterAdd UltramarGreenSign
+hi! link GitGutterChange UltramarAquaSign
+hi! link GitGutterDelete UltramarRedSign
+hi! link GitGutterChangeDelete UltramarAquaSign
 
 " }}}
 " GitCommit: "{{{
 
-hi! link gitcommitSelectedFile GruvboxGreen
-hi! link gitcommitDiscardedFile GruvboxRed
+hi! link gitcommitSelectedFile UltramarGreen
+hi! link gitcommitDiscardedFile UltramarRed
 
 " }}}
 " Signify: {{{
 
-hi! link SignifySignAdd GruvboxGreenSign
-hi! link SignifySignChange GruvboxAquaSign
-hi! link SignifySignDelete GruvboxRedSign
+hi! link SignifySignAdd UltramarGreenSign
+hi! link SignifySignChange UltramarAquaSign
+hi! link SignifySignDelete UltramarRedSign
 
 " }}}
 " Syntastic: {{{
@@ -772,30 +778,30 @@ hi! link SignifySignDelete GruvboxRedSign
 call s:HL('SyntasticError', s:none, s:none, s:undercurl, s:red)
 call s:HL('SyntasticWarning', s:none, s:none, s:undercurl, s:yellow)
 
-hi! link SyntasticErrorSign GruvboxRedSign
-hi! link SyntasticWarningSign GruvboxYellowSign
+hi! link SyntasticErrorSign UltramarRedSign
+hi! link SyntasticWarningSign UltramarYellowSign
 
 " }}}
 " Signature: {{{
-hi! link SignatureMarkText   GruvboxBlueSign
-hi! link SignatureMarkerText GruvboxPurpleSign
+hi! link SignatureMarkText   UltramarBlueSign
+hi! link SignatureMarkerText UltramarPurpleSign
 
 " }}}
 " ShowMarks: {{{
 
-hi! link ShowMarksHLl GruvboxBlueSign
-hi! link ShowMarksHLu GruvboxBlueSign
-hi! link ShowMarksHLo GruvboxBlueSign
-hi! link ShowMarksHLm GruvboxBlueSign
+hi! link ShowMarksHLl UltramarBlueSign
+hi! link ShowMarksHLu UltramarBlueSign
+hi! link ShowMarksHLo UltramarBlueSign
+hi! link ShowMarksHLm UltramarBlueSign
 
 " }}}
 " CtrlP: {{{
 
-hi! link CtrlPMatch GruvboxYellow
-hi! link CtrlPNoEntries GruvboxRed
-hi! link CtrlPPrtBase GruvboxBg2
-hi! link CtrlPPrtCursor GruvboxBlue
-hi! link CtrlPLinePre GruvboxBg2
+hi! link CtrlPMatch UltramarYellow
+hi! link CtrlPNoEntries UltramarRed
+hi! link CtrlPPrtBase UltramarBg2
+hi! link CtrlPPrtCursor UltramarBlue
+hi! link CtrlPLinePre UltramarBg2
 
 call s:HL('CtrlPMode1', s:blue, s:bg2, s:bold)
 call s:HL('CtrlPMode2', s:bg0, s:blue, s:bold)
@@ -804,15 +810,15 @@ call s:HL('CtrlPStats', s:fg4, s:bg2, s:bold)
 " }}}
 " Startify: {{{
 
-hi! link StartifyBracket GruvboxFg3
-hi! link StartifyFile GruvboxFg1
-hi! link StartifyNumber GruvboxBlue
-hi! link StartifyPath GruvboxGray
-hi! link StartifySlash GruvboxGray
-hi! link StartifySection GruvboxYellow
-hi! link StartifySpecial GruvboxBg2
-hi! link StartifyHeader GruvboxOrange
-hi! link StartifyFooter GruvboxBg2
+hi! link StartifyBracket UltramarFg3
+hi! link StartifyFile UltramarFg1
+hi! link StartifyNumber UltramarBlue
+hi! link StartifyPath UltramarGray
+hi! link StartifySlash UltramarGray
+hi! link StartifySection UltramarYellow
+hi! link StartifySpecial UltramarBg2
+hi! link StartifyHeader UltramarOrange
+hi! link StartifyFooter UltramarBg2
 
 " }}}
 " Vimshell: {{{
@@ -839,48 +845,48 @@ call s:HL('ALEError', s:none, s:none, s:undercurl, s:red)
 call s:HL('ALEWarning', s:none, s:none, s:undercurl, s:yellow)
 call s:HL('ALEInfo', s:none, s:none, s:undercurl, s:blue)
 
-hi! link ALEErrorSign GruvboxRedSign
-hi! link ALEWarningSign GruvboxYellowSign
-hi! link ALEInfoSign GruvboxBlueSign
+hi! link ALEErrorSign UltramarRedSign
+hi! link ALEWarningSign UltramarYellowSign
+hi! link ALEInfoSign UltramarBlueSign
 
 " }}}
 " Dirvish: {{{
 
-hi! link DirvishPathTail GruvboxAqua
-hi! link DirvishArg GruvboxYellow
+hi! link DirvishPathTail UltramarAqua
+hi! link DirvishArg UltramarYellow
 
 " }}}
 " Netrw: {{{
 
-hi! link netrwDir GruvboxAqua
-hi! link netrwClassify GruvboxAqua
-hi! link netrwLink GruvboxGray
-hi! link netrwSymLink GruvboxFg1
-hi! link netrwExe GruvboxYellow
-hi! link netrwComment GruvboxGray
-hi! link netrwList GruvboxBlue
-hi! link netrwHelpCmd GruvboxAqua
-hi! link netrwCmdSep GruvboxFg3
-hi! link netrwVersion GruvboxGreen
+hi! link netrwDir UltramarAqua
+hi! link netrwClassify UltramarAqua
+hi! link netrwLink UltramarGray
+hi! link netrwSymLink UltramarFg1
+hi! link netrwExe UltramarYellow
+hi! link netrwComment UltramarGray
+hi! link netrwList UltramarBlue
+hi! link netrwHelpCmd UltramarAqua
+hi! link netrwCmdSep UltramarFg3
+hi! link netrwVersion UltramarGreen
 
 " }}}
 " NERDTree: {{{
 
-hi! link NERDTreeDir GruvboxAqua
-hi! link NERDTreeDirSlash GruvboxAqua
+hi! link NERDTreeDir UltramarAqua
+hi! link NERDTreeDirSlash UltramarAqua
 
-hi! link NERDTreeOpenable GruvboxOrange
-hi! link NERDTreeClosable GruvboxOrange
+hi! link NERDTreeOpenable UltramarOrange
+hi! link NERDTreeClosable UltramarOrange
 
-hi! link NERDTreeFile GruvboxFg1
-hi! link NERDTreeExecFile GruvboxYellow
+hi! link NERDTreeFile UltramarFg1
+hi! link NERDTreeExecFile UltramarYellow
 
-hi! link NERDTreeUp GruvboxGray
-hi! link NERDTreeCWD GruvboxGreen
-hi! link NERDTreeHelp GruvboxFg1
+hi! link NERDTreeUp UltramarGray
+hi! link NERDTreeCWD UltramarGreen
+hi! link NERDTreeHelp UltramarFg1
 
-hi! link NERDTreeToggleOn GruvboxGreen
-hi! link NERDTreeToggleOff GruvboxRed
+hi! link NERDTreeToggleOn UltramarGreen
+hi! link NERDTreeToggleOff UltramarRed
 
 " }}}
 " Vim Multiple Cursors: {{{
@@ -893,31 +899,31 @@ call s:HL('multiple_cursors_visual', s:none, s:bg2)
 " Filetype specific -----------------------------------------------------------
 " Diff: {{{
 
-hi! link diffAdded GruvboxGreen
-hi! link diffRemoved GruvboxRed
-hi! link diffChanged GruvboxAqua
+hi! link diffAdded UltramarGreen
+hi! link diffRemoved UltramarRed
+hi! link diffChanged UltramarAqua
 
-hi! link diffFile GruvboxOrange
-hi! link diffNewFile GruvboxYellow
+hi! link diffFile UltramarOrange
+hi! link diffNewFile UltramarYellow
 
-hi! link diffLine GruvboxBlue
+hi! link diffLine UltramarBlue
 
 " }}}
 " Html: {{{
 
-hi! link htmlTag GruvboxBlue
-hi! link htmlEndTag GruvboxBlue
+hi! link htmlTag UltramarBlue
+hi! link htmlEndTag UltramarBlue
 
-hi! link htmlTagName GruvboxAquaBold
-hi! link htmlArg GruvboxAqua
+hi! link htmlTagName UltramarAquaBold
+hi! link htmlArg UltramarAqua
 
-hi! link htmlScriptTag GruvboxPurple
-hi! link htmlTagN GruvboxFg1
-hi! link htmlSpecialTagName GruvboxAquaBold
+hi! link htmlScriptTag UltramarPurple
+hi! link htmlTagN UltramarFg1
+hi! link htmlSpecialTagName UltramarAquaBold
 
 call s:HL('htmlLink', s:fg4, s:none, s:underline)
 
-hi! link htmlSpecialChar GruvboxOrange
+hi! link htmlSpecialChar UltramarOrange
 
 call s:HL('htmlBold', s:vim_fg, s:vim_bg, s:bold)
 call s:HL('htmlBoldUnderline', s:vim_fg, s:vim_bg, s:bold . s:underline)
@@ -931,403 +937,403 @@ call s:HL('htmlItalic', s:vim_fg, s:vim_bg, s:italic)
 " }}}
 " Xml: {{{
 
-hi! link xmlTag GruvboxBlue
-hi! link xmlEndTag GruvboxBlue
-hi! link xmlTagName GruvboxBlue
-hi! link xmlEqual GruvboxBlue
-hi! link docbkKeyword GruvboxAquaBold
+hi! link xmlTag UltramarBlue
+hi! link xmlEndTag UltramarBlue
+hi! link xmlTagName UltramarBlue
+hi! link xmlEqual UltramarBlue
+hi! link docbkKeyword UltramarAquaBold
 
-hi! link xmlDocTypeDecl GruvboxGray
-hi! link xmlDocTypeKeyword GruvboxPurple
-hi! link xmlCdataStart GruvboxGray
-hi! link xmlCdataCdata GruvboxPurple
-hi! link dtdFunction GruvboxGray
-hi! link dtdTagName GruvboxPurple
+hi! link xmlDocTypeDecl UltramarGray
+hi! link xmlDocTypeKeyword UltramarPurple
+hi! link xmlCdataStart UltramarGray
+hi! link xmlCdataCdata UltramarPurple
+hi! link dtdFunction UltramarGray
+hi! link dtdTagName UltramarPurple
 
-hi! link xmlAttrib GruvboxAqua
-hi! link xmlProcessingDelim GruvboxGray
-hi! link dtdParamEntityPunct GruvboxGray
-hi! link dtdParamEntityDPunct GruvboxGray
-hi! link xmlAttribPunct GruvboxGray
+hi! link xmlAttrib UltramarAqua
+hi! link xmlProcessingDelim UltramarGray
+hi! link dtdParamEntityPunct UltramarGray
+hi! link dtdParamEntityDPunct UltramarGray
+hi! link xmlAttribPunct UltramarGray
 
-hi! link xmlEntity GruvboxOrange
-hi! link xmlEntityPunct GruvboxOrange
+hi! link xmlEntity UltramarOrange
+hi! link xmlEntityPunct UltramarOrange
 " }}}
 " Vim: {{{
 
 call s:HL('vimCommentTitle', s:fg4_256, s:none, s:bold . s:italicize_comments)
 
-hi! link vimNotation GruvboxOrange
-hi! link vimBracket GruvboxOrange
-hi! link vimMapModKey GruvboxOrange
-hi! link vimFuncSID GruvboxFg3
-hi! link vimSetSep GruvboxFg3
-hi! link vimSep GruvboxFg3
-hi! link vimContinue GruvboxFg3
+hi! link vimNotation UltramarOrange
+hi! link vimBracket UltramarOrange
+hi! link vimMapModKey UltramarOrange
+hi! link vimFuncSID UltramarFg3
+hi! link vimSetSep UltramarFg3
+hi! link vimSep UltramarFg3
+hi! link vimContinue UltramarFg3
 
 " }}}
 " Clojure: {{{
 
-hi! link clojureKeyword GruvboxBlue
-hi! link clojureCond GruvboxOrange
-hi! link clojureSpecial GruvboxOrange
-hi! link clojureDefine GruvboxOrange
+hi! link clojureKeyword UltramarBlue
+hi! link clojureCond UltramarOrange
+hi! link clojureSpecial UltramarOrange
+hi! link clojureDefine UltramarOrange
 
-hi! link clojureFunc GruvboxYellow
-hi! link clojureRepeat GruvboxYellow
-hi! link clojureCharacter GruvboxAqua
-hi! link clojureStringEscape GruvboxAqua
-hi! link clojureException GruvboxRed
+hi! link clojureFunc UltramarYellow
+hi! link clojureRepeat UltramarYellow
+hi! link clojureCharacter UltramarAqua
+hi! link clojureStringEscape UltramarAqua
+hi! link clojureException UltramarRed
 
-hi! link clojureRegexp GruvboxAqua
-hi! link clojureRegexpEscape GruvboxAqua
+hi! link clojureRegexp UltramarAqua
+hi! link clojureRegexpEscape UltramarAqua
 call s:HL('clojureRegexpCharClass', s:fg3, s:none, s:bold)
 hi! link clojureRegexpMod clojureRegexpCharClass
 hi! link clojureRegexpQuantifier clojureRegexpCharClass
 
-hi! link clojureParen GruvboxFg3
-hi! link clojureAnonArg GruvboxYellow
-hi! link clojureVariable GruvboxBlue
-hi! link clojureMacro GruvboxOrange
+hi! link clojureParen UltramarFg3
+hi! link clojureAnonArg UltramarYellow
+hi! link clojureVariable UltramarBlue
+hi! link clojureMacro UltramarOrange
 
-hi! link clojureMeta GruvboxYellow
-hi! link clojureDeref GruvboxYellow
-hi! link clojureQuote GruvboxYellow
-hi! link clojureUnquote GruvboxYellow
+hi! link clojureMeta UltramarYellow
+hi! link clojureDeref UltramarYellow
+hi! link clojureQuote UltramarYellow
+hi! link clojureUnquote UltramarYellow
 
 " }}}
 " C: {{{
 
-hi! link cOperator GruvboxPurple
-hi! link cStructure GruvboxOrange
+hi! link cOperator UltramarPurple
+hi! link cStructure UltramarOrange
 
 " }}}
 " Python: {{{
 
-hi! link pythonBuiltin GruvboxOrange
-hi! link pythonBuiltinObj GruvboxOrange
-hi! link pythonBuiltinFunc GruvboxOrange
-hi! link pythonFunction GruvboxAqua
-hi! link pythonDecorator GruvboxRed
-hi! link pythonInclude GruvboxBlue
-hi! link pythonImport GruvboxBlue
-hi! link pythonRun GruvboxBlue
-hi! link pythonCoding GruvboxBlue
-hi! link pythonOperator GruvboxRed
-hi! link pythonException GruvboxRed
-hi! link pythonExceptions GruvboxPurple
-hi! link pythonBoolean GruvboxPurple
-hi! link pythonDot GruvboxFg3
-hi! link pythonConditional GruvboxRed
-hi! link pythonRepeat GruvboxRed
-hi! link pythonDottedName GruvboxGreenBold
+hi! link pythonBuiltin UltramarOrange
+hi! link pythonBuiltinObj UltramarOrange
+hi! link pythonBuiltinFunc UltramarOrange
+hi! link pythonFunction UltramarAqua
+hi! link pythonDecorator UltramarRed
+hi! link pythonInclude UltramarBlue
+hi! link pythonImport UltramarBlue
+hi! link pythonRun UltramarBlue
+hi! link pythonCoding UltramarBlue
+hi! link pythonOperator UltramarRed
+hi! link pythonException UltramarRed
+hi! link pythonExceptions UltramarPurple
+hi! link pythonBoolean UltramarPurple
+hi! link pythonDot UltramarFg3
+hi! link pythonConditional UltramarRed
+hi! link pythonRepeat UltramarRed
+hi! link pythonDottedName UltramarGreenBold
 
 " }}}
 " CSS: {{{
 
-hi! link cssBraces GruvboxBlue
-hi! link cssFunctionName GruvboxYellow
-hi! link cssIdentifier GruvboxOrange
-hi! link cssClassName GruvboxGreen
-hi! link cssColor GruvboxBlue
-hi! link cssSelectorOp GruvboxBlue
-hi! link cssSelectorOp2 GruvboxBlue
-hi! link cssImportant GruvboxGreen
-hi! link cssVendor GruvboxFg1
+hi! link cssBraces UltramarBlue
+hi! link cssFunctionName UltramarYellow
+hi! link cssIdentifier UltramarOrange
+hi! link cssClassName UltramarGreen
+hi! link cssColor UltramarBlue
+hi! link cssSelectorOp UltramarBlue
+hi! link cssSelectorOp2 UltramarBlue
+hi! link cssImportant UltramarGreen
+hi! link cssVendor UltramarFg1
 
-hi! link cssTextProp GruvboxAqua
-hi! link cssAnimationProp GruvboxAqua
-hi! link cssUIProp GruvboxYellow
-hi! link cssTransformProp GruvboxAqua
-hi! link cssTransitionProp GruvboxAqua
-hi! link cssPrintProp GruvboxAqua
-hi! link cssPositioningProp GruvboxYellow
-hi! link cssBoxProp GruvboxAqua
-hi! link cssFontDescriptorProp GruvboxAqua
-hi! link cssFlexibleBoxProp GruvboxAqua
-hi! link cssBorderOutlineProp GruvboxAqua
-hi! link cssBackgroundProp GruvboxAqua
-hi! link cssMarginProp GruvboxAqua
-hi! link cssListProp GruvboxAqua
-hi! link cssTableProp GruvboxAqua
-hi! link cssFontProp GruvboxAqua
-hi! link cssPaddingProp GruvboxAqua
-hi! link cssDimensionProp GruvboxAqua
-hi! link cssRenderProp GruvboxAqua
-hi! link cssColorProp GruvboxAqua
-hi! link cssGeneratedContentProp GruvboxAqua
+hi! link cssTextProp UltramarAqua
+hi! link cssAnimationProp UltramarAqua
+hi! link cssUIProp UltramarYellow
+hi! link cssTransformProp UltramarAqua
+hi! link cssTransitionProp UltramarAqua
+hi! link cssPrintProp UltramarAqua
+hi! link cssPositioningProp UltramarYellow
+hi! link cssBoxProp UltramarAqua
+hi! link cssFontDescriptorProp UltramarAqua
+hi! link cssFlexibleBoxProp UltramarAqua
+hi! link cssBorderOutlineProp UltramarAqua
+hi! link cssBackgroundProp UltramarAqua
+hi! link cssMarginProp UltramarAqua
+hi! link cssListProp UltramarAqua
+hi! link cssTableProp UltramarAqua
+hi! link cssFontProp UltramarAqua
+hi! link cssPaddingProp UltramarAqua
+hi! link cssDimensionProp UltramarAqua
+hi! link cssRenderProp UltramarAqua
+hi! link cssColorProp UltramarAqua
+hi! link cssGeneratedContentProp UltramarAqua
 
 " }}}
 " JavaScript: {{{
 
-hi! link javaScriptBraces GruvboxFg1
-hi! link javaScriptFunction GruvboxAqua
-hi! link javaScriptIdentifier GruvboxRed
-hi! link javaScriptMember GruvboxBlue
-hi! link javaScriptNumber GruvboxPurple
-hi! link javaScriptNull GruvboxPurple
-hi! link javaScriptParens GruvboxFg3
+hi! link javaScriptBraces UltramarFg1
+hi! link javaScriptFunction UltramarAqua
+hi! link javaScriptIdentifier UltramarRed
+hi! link javaScriptMember UltramarBlue
+hi! link javaScriptNumber UltramarPurple
+hi! link javaScriptNull UltramarPurple
+hi! link javaScriptParens UltramarFg3
 
 " }}}
 " YAJS: {{{
 
-hi! link javascriptImport GruvboxAqua
-hi! link javascriptExport GruvboxAqua
-hi! link javascriptClassKeyword GruvboxAqua
-hi! link javascriptClassExtends GruvboxAqua
-hi! link javascriptDefault GruvboxAqua
+hi! link javascriptImport UltramarAqua
+hi! link javascriptExport UltramarAqua
+hi! link javascriptClassKeyword UltramarAqua
+hi! link javascriptClassExtends UltramarAqua
+hi! link javascriptDefault UltramarAqua
 
-hi! link javascriptClassName GruvboxYellow
-hi! link javascriptClassSuperName GruvboxYellow
-hi! link javascriptGlobal GruvboxYellow
+hi! link javascriptClassName UltramarYellow
+hi! link javascriptClassSuperName UltramarYellow
+hi! link javascriptGlobal UltramarYellow
 
-hi! link javascriptEndColons GruvboxFg1
-hi! link javascriptFuncArg GruvboxFg1
-hi! link javascriptGlobalMethod GruvboxFg1
-hi! link javascriptNodeGlobal GruvboxFg1
-hi! link javascriptBOMWindowProp GruvboxFg1
-hi! link javascriptArrayMethod GruvboxFg1
-hi! link javascriptArrayStaticMethod GruvboxFg1
-hi! link javascriptCacheMethod GruvboxFg1
-hi! link javascriptDateMethod GruvboxFg1
-hi! link javascriptMathStaticMethod GruvboxFg1
+hi! link javascriptEndColons UltramarFg1
+hi! link javascriptFuncArg UltramarFg1
+hi! link javascriptGlobalMethod UltramarFg1
+hi! link javascriptNodeGlobal UltramarFg1
+hi! link javascriptBOMWindowProp UltramarFg1
+hi! link javascriptArrayMethod UltramarFg1
+hi! link javascriptArrayStaticMethod UltramarFg1
+hi! link javascriptCacheMethod UltramarFg1
+hi! link javascriptDateMethod UltramarFg1
+hi! link javascriptMathStaticMethod UltramarFg1
 
-" hi! link javascriptProp GruvboxFg1
-hi! link javascriptURLUtilsProp GruvboxFg1
-hi! link javascriptBOMNavigatorProp GruvboxFg1
-hi! link javascriptDOMDocMethod GruvboxFg1
-hi! link javascriptDOMDocProp GruvboxFg1
-hi! link javascriptBOMLocationMethod GruvboxFg1
-hi! link javascriptBOMWindowMethod GruvboxFg1
-hi! link javascriptStringMethod GruvboxFg1
+" hi! link javascriptProp UltramarFg1
+hi! link javascriptURLUtilsProp UltramarFg1
+hi! link javascriptBOMNavigatorProp UltramarFg1
+hi! link javascriptDOMDocMethod UltramarFg1
+hi! link javascriptDOMDocProp UltramarFg1
+hi! link javascriptBOMLocationMethod UltramarFg1
+hi! link javascriptBOMWindowMethod UltramarFg1
+hi! link javascriptStringMethod UltramarFg1
 
-hi! link javascriptVariable GruvboxOrange
-" hi! link javascriptVariable GruvboxRed
-" hi! link javascriptIdentifier GruvboxOrange
-" hi! link javascriptClassSuper GruvboxOrange
-hi! link javascriptIdentifier GruvboxOrange
-hi! link javascriptClassSuper GruvboxOrange
+hi! link javascriptVariable UltramarOrange
+" hi! link javascriptVariable UltramarRed
+" hi! link javascriptIdentifier UltramarOrange
+" hi! link javascriptClassSuper UltramarOrange
+hi! link javascriptIdentifier UltramarOrange
+hi! link javascriptClassSuper UltramarOrange
 
-" hi! link javascriptFuncKeyword GruvboxOrange
-" hi! link javascriptAsyncFunc GruvboxOrange
-hi! link javascriptFuncKeyword GruvboxAqua
-hi! link javascriptAsyncFunc GruvboxAqua
-hi! link javascriptClassStatic GruvboxOrange
+" hi! link javascriptFuncKeyword UltramarOrange
+" hi! link javascriptAsyncFunc UltramarOrange
+hi! link javascriptFuncKeyword UltramarAqua
+hi! link javascriptAsyncFunc UltramarAqua
+hi! link javascriptClassStatic UltramarOrange
 
-hi! link javascriptOperator GruvboxRed
-hi! link javascriptForOperator GruvboxRed
-hi! link javascriptYield GruvboxRed
-hi! link javascriptExceptions GruvboxRed
-hi! link javascriptMessage GruvboxRed
+hi! link javascriptOperator UltramarRed
+hi! link javascriptForOperator UltramarRed
+hi! link javascriptYield UltramarRed
+hi! link javascriptExceptions UltramarRed
+hi! link javascriptMessage UltramarRed
 
-hi! link javascriptTemplateSB GruvboxAqua
-hi! link javascriptTemplateSubstitution GruvboxFg1
+hi! link javascriptTemplateSB UltramarAqua
+hi! link javascriptTemplateSubstitution UltramarFg1
 
-" hi! link javascriptLabel GruvboxBlue
-" hi! link javascriptObjectLabel GruvboxBlue
-" hi! link javascriptPropertyName GruvboxBlue
-hi! link javascriptLabel GruvboxFg1
-hi! link javascriptObjectLabel GruvboxFg1
-hi! link javascriptPropertyName GruvboxFg1
+" hi! link javascriptLabel UltramarBlue
+" hi! link javascriptObjectLabel UltramarBlue
+" hi! link javascriptPropertyName UltramarBlue
+hi! link javascriptLabel UltramarFg1
+hi! link javascriptObjectLabel UltramarFg1
+hi! link javascriptPropertyName UltramarFg1
 
-hi! link javascriptLogicSymbols GruvboxFg1
-hi! link javascriptArrowFunc GruvboxYellow
+hi! link javascriptLogicSymbols UltramarFg1
+hi! link javascriptArrowFunc UltramarYellow
 
-hi! link javascriptDocParamName GruvboxFg4
-hi! link javascriptDocTags GruvboxFg4
-hi! link javascriptDocNotation GruvboxFg4
-hi! link javascriptDocParamType GruvboxFg4
-hi! link javascriptDocNamedParamType GruvboxFg4
+hi! link javascriptDocParamName UltramarFg4
+hi! link javascriptDocTags UltramarFg4
+hi! link javascriptDocNotation UltramarFg4
+hi! link javascriptDocParamType UltramarFg4
+hi! link javascriptDocNamedParamType UltramarFg4
 
-hi! link javascriptBrackets GruvboxFg1
-hi! link javascriptDOMElemAttrs GruvboxFg1
-hi! link javascriptDOMEventMethod GruvboxFg1
-hi! link javascriptDOMNodeMethod GruvboxFg1
-hi! link javascriptDOMStorageMethod GruvboxFg1
-hi! link javascriptHeadersMethod GruvboxFg1
+hi! link javascriptBrackets UltramarFg1
+hi! link javascriptDOMElemAttrs UltramarFg1
+hi! link javascriptDOMEventMethod UltramarFg1
+hi! link javascriptDOMNodeMethod UltramarFg1
+hi! link javascriptDOMStorageMethod UltramarFg1
+hi! link javascriptHeadersMethod UltramarFg1
 
-hi! link javascriptAsyncFuncKeyword GruvboxRed
-hi! link javascriptAwaitFuncKeyword GruvboxRed
+hi! link javascriptAsyncFuncKeyword UltramarRed
+hi! link javascriptAwaitFuncKeyword UltramarRed
 
 " }}}
 " PanglossJS: {{{
 
-hi! link jsClassKeyword GruvboxAqua
-hi! link jsExtendsKeyword GruvboxAqua
-hi! link jsExportDefault GruvboxAqua
-hi! link jsTemplateBraces GruvboxAqua
-hi! link jsGlobalNodeObjects GruvboxFg1
-hi! link jsGlobalObjects GruvboxFg1
-hi! link jsFunction GruvboxAqua
-hi! link jsFuncParens GruvboxFg3
-hi! link jsParens GruvboxFg3
-hi! link jsNull GruvboxPurple
-hi! link jsUndefined GruvboxPurple
-hi! link jsClassDefinition GruvboxYellow
+hi! link jsClassKeyword UltramarAqua
+hi! link jsExtendsKeyword UltramarAqua
+hi! link jsExportDefault UltramarAqua
+hi! link jsTemplateBraces UltramarAqua
+hi! link jsGlobalNodeObjects UltramarFg1
+hi! link jsGlobalObjects UltramarFg1
+hi! link jsFunction UltramarAqua
+hi! link jsFuncParens UltramarFg3
+hi! link jsParens UltramarFg3
+hi! link jsNull UltramarPurple
+hi! link jsUndefined UltramarPurple
+hi! link jsClassDefinition UltramarYellow
 
 " }}}
 " TypeScript: {{{
 
-hi! link typeScriptReserved GruvboxAqua
-hi! link typeScriptLabel GruvboxAqua
-hi! link typeScriptFuncKeyword GruvboxAqua
-hi! link typeScriptIdentifier GruvboxOrange
-hi! link typeScriptBraces GruvboxFg1
-hi! link typeScriptEndColons GruvboxFg1
-hi! link typeScriptDOMObjects GruvboxFg1
-hi! link typeScriptAjaxMethods GruvboxFg1
-hi! link typeScriptLogicSymbols GruvboxFg1
+hi! link typeScriptReserved UltramarAqua
+hi! link typeScriptLabel UltramarAqua
+hi! link typeScriptFuncKeyword UltramarAqua
+hi! link typeScriptIdentifier UltramarOrange
+hi! link typeScriptBraces UltramarFg1
+hi! link typeScriptEndColons UltramarFg1
+hi! link typeScriptDOMObjects UltramarFg1
+hi! link typeScriptAjaxMethods UltramarFg1
+hi! link typeScriptLogicSymbols UltramarFg1
 hi! link typeScriptDocSeeTag Comment
 hi! link typeScriptDocParam Comment
 hi! link typeScriptDocTags vimCommentTitle
-hi! link typeScriptGlobalObjects GruvboxFg1
-hi! link typeScriptParens GruvboxFg3
-hi! link typeScriptOpSymbols GruvboxFg3
-hi! link typeScriptHtmlElemProperties GruvboxFg1
-hi! link typeScriptNull GruvboxPurple
-hi! link typeScriptInterpolationDelimiter GruvboxAqua
+hi! link typeScriptGlobalObjects UltramarFg1
+hi! link typeScriptParens UltramarFg3
+hi! link typeScriptOpSymbols UltramarFg3
+hi! link typeScriptHtmlElemProperties UltramarFg1
+hi! link typeScriptNull UltramarPurple
+hi! link typeScriptInterpolationDelimiter UltramarAqua
 
 " }}}
 " PureScript: {{{
 
-hi! link purescriptModuleKeyword GruvboxAqua
-hi! link purescriptModuleName GruvboxFg1
-hi! link purescriptWhere GruvboxAqua
-hi! link purescriptDelimiter GruvboxFg4
-hi! link purescriptType GruvboxFg1
-hi! link purescriptImportKeyword GruvboxAqua
-hi! link purescriptHidingKeyword GruvboxAqua
-hi! link purescriptAsKeyword GruvboxAqua
-hi! link purescriptStructure GruvboxAqua
-hi! link purescriptOperator GruvboxBlue
+hi! link purescriptModuleKeyword UltramarAqua
+hi! link purescriptModuleName UltramarFg1
+hi! link purescriptWhere UltramarAqua
+hi! link purescriptDelimiter UltramarFg4
+hi! link purescriptType UltramarFg1
+hi! link purescriptImportKeyword UltramarAqua
+hi! link purescriptHidingKeyword UltramarAqua
+hi! link purescriptAsKeyword UltramarAqua
+hi! link purescriptStructure UltramarAqua
+hi! link purescriptOperator UltramarBlue
 
-hi! link purescriptTypeVar GruvboxFg1
-hi! link purescriptConstructor GruvboxFg1
-hi! link purescriptFunction GruvboxFg1
-hi! link purescriptConditional GruvboxOrange
-hi! link purescriptBacktick GruvboxOrange
+hi! link purescriptTypeVar UltramarFg1
+hi! link purescriptConstructor UltramarFg1
+hi! link purescriptFunction UltramarFg1
+hi! link purescriptConditional UltramarOrange
+hi! link purescriptBacktick UltramarOrange
 
 " }}}
 " CoffeeScript: {{{
 
-hi! link coffeeExtendedOp GruvboxFg3
-hi! link coffeeSpecialOp GruvboxFg3
-hi! link coffeeCurly GruvboxOrange
-hi! link coffeeParen GruvboxFg3
-hi! link coffeeBracket GruvboxOrange
+hi! link coffeeExtendedOp UltramarFg3
+hi! link coffeeSpecialOp UltramarFg3
+hi! link coffeeCurly UltramarOrange
+hi! link coffeeParen UltramarFg3
+hi! link coffeeBracket UltramarOrange
 
 " }}}
 " Ruby: {{{
 
-hi! link rubyStringDelimiter GruvboxGreen
-hi! link rubyInterpolationDelimiter GruvboxAqua
+hi! link rubyStringDelimiter UltramarGreen
+hi! link rubyInterpolationDelimiter UltramarAqua
 
 " }}}
 " ObjectiveC: {{{
 
-hi! link objcTypeModifier GruvboxRed
-hi! link objcDirective GruvboxBlue
+hi! link objcTypeModifier UltramarRed
+hi! link objcDirective UltramarBlue
 
 " }}}
 " Go: {{{
 
-hi! link goDirective GruvboxAqua
-hi! link goConstants GruvboxPurple
-hi! link goDeclaration GruvboxRed
-hi! link goDeclType GruvboxBlue
-hi! link goBuiltins GruvboxOrange
+hi! link goDirective UltramarAqua
+hi! link goConstants UltramarPurple
+hi! link goDeclaration UltramarRed
+hi! link goDeclType UltramarBlue
+hi! link goBuiltins UltramarOrange
 
 " }}}
 " Lua: {{{
 
-hi! link luaIn GruvboxRed
-hi! link luaFunction GruvboxAqua
-hi! link luaTable GruvboxOrange
+hi! link luaIn UltramarRed
+hi! link luaFunction UltramarAqua
+hi! link luaTable UltramarOrange
 
 " }}}
 " MoonScript: {{{
 
-hi! link moonSpecialOp GruvboxFg3
-hi! link moonExtendedOp GruvboxFg3
-hi! link moonFunction GruvboxFg3
-hi! link moonObject GruvboxYellow
+hi! link moonSpecialOp UltramarFg3
+hi! link moonExtendedOp UltramarFg3
+hi! link moonFunction UltramarFg3
+hi! link moonObject UltramarYellow
 
 " }}}
 " Java: {{{
 
-hi! link javaAnnotation GruvboxBlue
-hi! link javaDocTags GruvboxAqua
+hi! link javaAnnotation UltramarBlue
+hi! link javaDocTags UltramarAqua
 hi! link javaCommentTitle vimCommentTitle
-hi! link javaParen GruvboxFg3
-hi! link javaParen1 GruvboxFg3
-hi! link javaParen2 GruvboxFg3
-hi! link javaParen3 GruvboxFg3
-hi! link javaParen4 GruvboxFg3
-hi! link javaParen5 GruvboxFg3
-hi! link javaOperator GruvboxOrange
+hi! link javaParen UltramarFg3
+hi! link javaParen1 UltramarFg3
+hi! link javaParen2 UltramarFg3
+hi! link javaParen3 UltramarFg3
+hi! link javaParen4 UltramarFg3
+hi! link javaParen5 UltramarFg3
+hi! link javaOperator UltramarOrange
 
-hi! link javaVarArg GruvboxGreen
+hi! link javaVarArg UltramarGreen
 
 " }}}
 " Elixir: {{{
 
 hi! link elixirDocString Comment
 
-hi! link elixirStringDelimiter GruvboxGreen
-hi! link elixirInterpolationDelimiter GruvboxAqua
+hi! link elixirStringDelimiter UltramarGreen
+hi! link elixirInterpolationDelimiter UltramarAqua
 
-hi! link elixirModuleDeclaration GruvboxYellow
+hi! link elixirModuleDeclaration UltramarYellow
 
 " }}}
 " Scala: {{{
 
 " NB: scala vim syntax file is kinda horrible
-hi! link scalaNameDefinition GruvboxFg1
-hi! link scalaCaseFollowing GruvboxFg1
-hi! link scalaCapitalWord GruvboxFg1
-hi! link scalaTypeExtension GruvboxFg1
+hi! link scalaNameDefinition UltramarFg1
+hi! link scalaCaseFollowing UltramarFg1
+hi! link scalaCapitalWord UltramarFg1
+hi! link scalaTypeExtension UltramarFg1
 
-hi! link scalaKeyword GruvboxRed
-hi! link scalaKeywordModifier GruvboxRed
+hi! link scalaKeyword UltramarRed
+hi! link scalaKeywordModifier UltramarRed
 
-hi! link scalaSpecial GruvboxAqua
-hi! link scalaOperator GruvboxFg1
+hi! link scalaSpecial UltramarAqua
+hi! link scalaOperator UltramarFg1
 
-hi! link scalaTypeDeclaration GruvboxYellow
-hi! link scalaTypeTypePostDeclaration GruvboxYellow
+hi! link scalaTypeDeclaration UltramarYellow
+hi! link scalaTypeTypePostDeclaration UltramarYellow
 
-hi! link scalaInstanceDeclaration GruvboxFg1
-hi! link scalaInterpolation GruvboxAqua
+hi! link scalaInstanceDeclaration UltramarFg1
+hi! link scalaInterpolation UltramarAqua
 
 " }}}
 " Markdown: {{{
 
 call s:HL('markdownItalic', s:fg3, s:none, s:italic)
 
-hi! link markdownH1 GruvboxGreenBold
-hi! link markdownH2 GruvboxGreenBold
-hi! link markdownH3 GruvboxYellowBold
-hi! link markdownH4 GruvboxYellowBold
-hi! link markdownH5 GruvboxYellow
-hi! link markdownH6 GruvboxYellow
+hi! link markdownH1 UltramarGreenBold
+hi! link markdownH2 UltramarGreenBold
+hi! link markdownH3 UltramarYellowBold
+hi! link markdownH4 UltramarYellowBold
+hi! link markdownH5 UltramarYellow
+hi! link markdownH6 UltramarYellow
 
-hi! link markdownCode GruvboxAqua
-hi! link markdownCodeBlock GruvboxAqua
-hi! link markdownCodeDelimiter GruvboxAqua
+hi! link markdownCode UltramarAqua
+hi! link markdownCodeBlock UltramarAqua
+hi! link markdownCodeDelimiter UltramarAqua
 
-hi! link markdownBlockquote GruvboxGray
-hi! link markdownListMarker GruvboxGray
-hi! link markdownOrderedListMarker GruvboxGray
-hi! link markdownRule GruvboxGray
-hi! link markdownHeadingRule GruvboxGray
+hi! link markdownBlockquote UltramarGray
+hi! link markdownListMarker UltramarGray
+hi! link markdownOrderedListMarker UltramarGray
+hi! link markdownRule UltramarGray
+hi! link markdownHeadingRule UltramarGray
 
-hi! link markdownUrlDelimiter GruvboxFg3
-hi! link markdownLinkDelimiter GruvboxFg3
-hi! link markdownLinkTextDelimiter GruvboxFg3
+hi! link markdownUrlDelimiter UltramarFg3
+hi! link markdownLinkDelimiter UltramarFg3
+hi! link markdownLinkTextDelimiter UltramarFg3
 
-hi! link markdownHeadingDelimiter GruvboxOrange
-hi! link markdownUrl GruvboxPurple
-hi! link markdownUrlTitleDelimiter GruvboxGreen
+hi! link markdownHeadingDelimiter UltramarOrange
+hi! link markdownUrl UltramarPurple
+hi! link markdownUrlTitleDelimiter UltramarGreen
 
 call s:HL('markdownLinkText', s:gray, s:none, s:underline)
 hi! link markdownIdDeclaration markdownLinkText
@@ -1335,44 +1341,44 @@ hi! link markdownIdDeclaration markdownLinkText
 " }}}
 " Haskell: {{{
 
-" hi! link haskellType GruvboxYellow
-" hi! link haskellOperators GruvboxOrange
-" hi! link haskellConditional GruvboxAqua
-" hi! link haskellLet GruvboxOrange
+" hi! link haskellType UltramarYellow
+" hi! link haskellOperators UltramarOrange
+" hi! link haskellConditional UltramarAqua
+" hi! link haskellLet UltramarOrange
 "
-hi! link haskellType GruvboxFg1
-hi! link haskellIdentifier GruvboxFg1
-hi! link haskellSeparator GruvboxFg1
-hi! link haskellDelimiter GruvboxFg4
-hi! link haskellOperators GruvboxBlue
+hi! link haskellType UltramarFg1
+hi! link haskellIdentifier UltramarFg1
+hi! link haskellSeparator UltramarFg1
+hi! link haskellDelimiter UltramarFg4
+hi! link haskellOperators UltramarBlue
 "
-hi! link haskellBacktick GruvboxOrange
-hi! link haskellStatement GruvboxOrange
-hi! link haskellConditional GruvboxOrange
+hi! link haskellBacktick UltramarOrange
+hi! link haskellStatement UltramarOrange
+hi! link haskellConditional UltramarOrange
 
-hi! link haskellLet GruvboxAqua
-hi! link haskellDefault GruvboxAqua
-hi! link haskellWhere GruvboxAqua
-hi! link haskellBottom GruvboxAqua
-hi! link haskellBlockKeywords GruvboxAqua
-hi! link haskellImportKeywords GruvboxAqua
-hi! link haskellDeclKeyword GruvboxAqua
-hi! link haskellDeriving GruvboxAqua
-hi! link haskellAssocType GruvboxAqua
+hi! link haskellLet UltramarAqua
+hi! link haskellDefault UltramarAqua
+hi! link haskellWhere UltramarAqua
+hi! link haskellBottom UltramarAqua
+hi! link haskellBlockKeywords UltramarAqua
+hi! link haskellImportKeywords UltramarAqua
+hi! link haskellDeclKeyword UltramarAqua
+hi! link haskellDeriving UltramarAqua
+hi! link haskellAssocType UltramarAqua
 
-hi! link haskellNumber GruvboxPurple
-hi! link haskellPragma GruvboxPurple
+hi! link haskellNumber UltramarPurple
+hi! link haskellPragma UltramarPurple
 
-hi! link haskellString GruvboxGreen
-hi! link haskellChar GruvboxGreen
+hi! link haskellString UltramarGreen
+hi! link haskellChar UltramarGreen
 
 " }}}
 " Json: {{{
 
-hi! link jsonKeyword GruvboxGreen
-hi! link jsonQuote GruvboxGreen
-hi! link jsonBraces GruvboxFg1
-hi! link jsonString GruvboxFg1
+hi! link jsonKeyword UltramarGreen
+hi! link jsonQuote UltramarGreen
+hi! link jsonBraces UltramarFg1
+hi! link jsonString UltramarFg1
 
 " }}}
 
@@ -1380,11 +1386,11 @@ hi! link jsonString GruvboxFg1
 " Functions -------------------------------------------------------------------
 " Search Highlighting Cursor {{{
 
-function! GruvboxHlsShowCursor()
+function! UltramarHlsShowCursor()
   call s:HL('Cursor', s:bg0, s:hls_cursor)
 endfunction
 
-function! GruvboxHlsHideCursor()
+function! UltramarHlsHideCursor()
   call s:HL('Cursor', s:none, s:none, s:inverse)
 endfunction
 
