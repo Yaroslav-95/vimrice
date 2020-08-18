@@ -19,6 +19,8 @@ Plug 'neomake/neomake'
 Plug 'jamessan/vim-gnupg'
 Plug 'majutsushi/tagbar'
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+Plug 'xavierd/clang_complete'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
