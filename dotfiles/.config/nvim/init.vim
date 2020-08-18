@@ -207,8 +207,13 @@ au BufEnter * let &titlestring = "vim - " . expand("%t")
       \ 'python': ['/usr/local/bin/pyls'],
       \ }
 
+" LanguageClient-neovim
   nmap <F4> <Plug>(lcn-menu)
   nmap <silent> gd <Plug>(lcn-definition)
+
+" Goyo
+  let g:goyo_width = 100
+  map <leader>g :Goyo<CR>
 
 " neomake
   let g:neomake_javascript_enabled_makers = ['eslint']
