@@ -69,7 +69,7 @@ au BufEnter * let &titlestring = "vim - " . expand("%t")
   set statusline+=%<
   set statusline+=\ %f%r%m
   set statusline+=%=
-  set statusline+=\ %l:%c/%L
+  set statusline+=\ %l:%v/%L
   set statusline+=\ 
   set statusline+=%#StatusLineNC#
   set statusline+=\ %Y
@@ -214,8 +214,3 @@ au BufEnter * let &titlestring = "vim - " . expand("%t")
 " Goyo
   let g:goyo_width = 100
   map <leader>g :Goyo<CR>
-
-" neomake
-  let g:neomake_javascript_enabled_makers = ['eslint']
-  let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-  call neomake#configure#automake('w')
