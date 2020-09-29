@@ -41,6 +41,7 @@ call plug#end()
 	set number
 	set relativenumber
   set scrolloff=5
+  set colorcolumn=+1
 
 " Set screen title
 let &titlestring = "vim - " . expand("%:t")
