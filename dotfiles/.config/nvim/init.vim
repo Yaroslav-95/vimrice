@@ -202,6 +202,8 @@ au BufEnter * let &titlestring = "vim - " . expand("%t")
 
 " LSP
   let g:LanguageClient_serverCommands = {
+      \ 'c': ['/usr/bin/clangd'],
+      \ 'cpp': ['/usr/bin/clangd'],
       \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
       \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
       \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
