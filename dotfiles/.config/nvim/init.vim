@@ -203,11 +203,11 @@ au BufEnter * let &titlestring = "vim - " . expand("%t")
 " LSP
   let g:LanguageClient_serverCommands = {
       \ 'c': ['/usr/bin/clangd'],
+      \ 'go': ['/usr/bin/gopls'],
       \ 'cpp': ['/usr/bin/clangd'],
+      \ 'python': ['/usr/bin/pyls'],
       \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
-      \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-      \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-      \ 'python': ['/usr/local/bin/pyls'],
+      \ 'javascript': ['/usr/bin/javascript-typescript-stdio'],
       \ }
 
 " LanguageClient-neovim
