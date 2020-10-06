@@ -80,8 +80,8 @@ au BufEnter * let &titlestring = "vim - " . expand("%t")
 
 " default indentation
 	filetype plugin indent on
-	set tabstop=2
-	set shiftwidth=2
+	set tabstop=4
+	set shiftwidth=4
 	set expandtab
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
