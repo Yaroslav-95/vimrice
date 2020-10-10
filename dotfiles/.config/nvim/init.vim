@@ -3,96 +3,101 @@ let mapleader =" "
 
 " Check if vim-plug is installed, otherwise download and install
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.local/share/nvim/site/plugged')
-Plug 'junegunn/goyo.vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'jreybert/vimagit'
-Plug 'tpope/vim-commentary'
-Plug 'preservim/nerdtree'
-Plug 'ervandew/supertab'
-Plug 'neomake/neomake'
-Plug 'jamessan/vim-gnupg'
-Plug 'majutsushi/tagbar'
-Plug 'rust-lang/rust.vim'
-Plug 'cespare/vim-toml'
-Plug 'xavierd/clang_complete'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+	Plug 'junegunn/goyo.vim'
+	Plug 'PotatoesMaster/i3-vim-syntax'
+	Plug 'jreybert/vimagit'
+	Plug 'tpope/vim-commentary'
+	Plug 'preservim/nerdtree'
+	Plug 'vim-scripts/Smart-Tabs'
+	Plug 'ervandew/supertab'
+	Plug 'neomake/neomake'
+	Plug 'jamessan/vim-gnupg'
+	Plug 'majutsushi/tagbar'
+	Plug 'rust-lang/rust.vim'
+	Plug 'cespare/vim-toml'
+	Plug 'xavierd/clang_complete'
+	Plug 'autozimu/LanguageClient-neovim', {
+		\ 'branch': 'next',
+		\ 'do': 'bash install.sh',
+		\ }
 call plug#end()
 
 " Some basics:
 	set nocompatible
 	filetype plugin on
 	syntax on
-  set omnifunc=syntaxcomplete#Complete
-  set background=dark
-  set termguicolors
-  set guicursor=n-v-c-sm:hor20,i-ci-ve:ver25,r-cr-o:block
-  set cursorline
-  let g:ultramar_italic=1
-  colorscheme ultramar
+	set foldmethod=syntax
+	set omnifunc=syntaxcomplete#Complete
+	set background=dark
+	set termguicolors
+	set guicursor=n-v-c-sm:hor20,i-ci-ve:ver25,r-cr-o:block
+	set cursorline
+	let g:ultramar_italic=1
+	colorscheme ultramar
 	set number
 	set relativenumber
-  set scrolloff=5
-  set colorcolumn=+1
+	set scrolloff=5
+	set colorcolumn=+1
 
 " Set screen title
-let &titlestring = "vim - " . expand("%:t")
-if &term == "screen"
-  set t_ts=^[k
-  set t_fs=^[\
-endif
-set title
-au BufEnter * let &titlestring = "vim - " . expand("%t")
+	let &titlestring = "vim - " . expand("%:t")
+	if &term == "screen"
+		set t_ts=^[k
+		set t_fs=^[\
+	endif
+	set title
+	au BufEnter * let &titlestring = "vim - " . expand("%t")
 
 " Functions for git branch name on statusline
-  function! GitBranch()
-    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-  endfunction
-  function! StatuslineGit()
-    let l:branchname = GitBranch()
-    return strlen(l:branchname) > 0?'   '.l:branchname.' ':''
-  endfunction
+	function! GitBranch()
+	return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+	endfunction
+	function! StatuslineGit()
+	let l:branchname = GitBranch()
+	return strlen(l:branchname) > 0?'   '.l:branchname.' ':''
+	endfunction
 
 " Statusline
-  let laststatus=2
-  set statusline=
-  set statusline+=%#CursorLineNR#
-  set statusline+=%{StatuslineGit()}
-  set statusline+=%#StatusLine#
-  set statusline+=%<
-  set statusline+=\ %f%r%m
-  set statusline+=%=
-  set statusline+=\ %l:%v/%L
-  set statusline+=\ 
-  set statusline+=%#StatusLineNC#
-  set statusline+=\ %Y
-  set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-  set statusline+=\[%{&fileformat}\]
-  set statusline+=\ 
+	let laststatus=2
+	set statusline=
+	set statusline+=%#CursorLineNR#
+	set statusline+=%{StatuslineGit()}
+	set statusline+=%#StatusLine#
+	set statusline+=%<
+	set statusline+=\ %f%r%m
+	set statusline+=%=
+	set statusline+=\ %l:%v/%L
+	set statusline+=\ 
+	set statusline+=%#StatusLineNC#
+	set statusline+=\ %Y
+	set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+	set statusline+=\[%{&fileformat}\]
+	set statusline+=\ 
 
-" default indentation
+	" default indentation
 	filetype plugin indent on
+	set noexpandtab
+	set copyindent
+	set preserveindent
+	set softtabstop=0
 	set tabstop=4
 	set shiftwidth=4
-	set expandtab
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow
 	set splitright
 
 " To avoid switching between keyboards
-  set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯХЪБЮ;ABCDEFGHIJKLMNOPQRSTUVWXYZ{}<>,фисвуапршолдьтщзйкыегмцчняхъэ;abcdefghijklmnopqrstuvwxyz[]'
+	set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯХЪБЮ;ABCDEFGHIJKLMNOPQRSTUVWXYZ{}<>,фисвуапршолдьтщзйкыегмцчняхъэ;abcdefghijklmnopqrstuvwxyz[]'
 
 " Toggle relative line numbers
-  map <leader>r :set invrelativenumber<CR>
+	map <leader>r :set invrelativenumber<CR>
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
@@ -119,31 +124,31 @@ au BufEnter * let &titlestring = "vim - " . expand("%t")
 	map <F2> :setlocal spell! spelllang=en_us,es,ru<CR>
 
 " Save changes
-  noremap <leader>s :update<CR>
+	noremap <leader>s :update<CR>
 " with russian layout
-  noremap <leader>ы :update<CR>
+	noremap <leader>ы :update<CR>
 
 " Copy to clipboard
-  vnoremap  <leader>y  "+y
-  nnoremap  <leader>Y  "+yg_
-  nnoremap  <leader>y  "+y
-  nnoremap  <leader>yy  "+yy
+	vnoremap  <leader>y  "+y
+	nnoremap  <leader>Y  "+yg_
+	nnoremap  <leader>y  "+y
+	nnoremap  <leader>yy  "+yy
 " with russian layout
-  vnoremap  <leader>н  "+y
-  nnoremap  <leader>Н  "+yg_
-  nnoremap  <leader>н  "+y
-  nnoremap  <leader>нн  "+yy
+	vnoremap  <leader>н  "+y
+	nnoremap  <leader>Н  "+yg_
+	nnoremap  <leader>н  "+y
+	nnoremap  <leader>нн  "+yy
 
 " Paste from clipboard
-  nnoremap <leader>p "+p
-  nnoremap <leader>P "+P
-  vnoremap <leader>p "+p
-  vnoremap <leader>P "+P
+	nnoremap <leader>p "+p
+	nnoremap <leader>P "+P
+	vnoremap <leader>p "+p
+	vnoremap <leader>P "+P
 " with russian layout
-  nnoremap <leader>з "+p
-  nnoremap <leader>З "+P
-  vnoremap <leader>з "+p
-  vnoremap <leader>З "+P
+	nnoremap <leader>з "+p
+	nnoremap <leader>З "+P
+	vnoremap <leader>з "+p
+	vnoremap <leader>З "+P
 
 " Enable autocompletion:
 	set wildmode=list:longest,full
@@ -159,16 +164,16 @@ au BufEnter * let &titlestring = "vim - " . expand("%t")
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Join line with alt
-  nnoremap <M-j> J
+	nnoremap <M-j> J
 " with russian layout
-  nnoremap <M-о> J
+	nnoremap <M-о> J
 
 " Easier tab navigation (similar to qutebrowser)
-  nnoremap J :tabn<cr>
-  nnoremap K :tabp<cr>
+	nnoremap J :tabn<cr>
+	nnoremap K :tabp<cr>
 " with russian layout
-  nnoremap О :tabn<cr>
-  nnoremap Л :tabp<cr>
+	nnoremap О :tabn<cr>
+	nnoremap Л :tabp<cr>
 
 " C-T for new tab
 	nnoremap <C-t> :tabe<Space>
@@ -191,8 +196,8 @@ au BufEnter * let &titlestring = "vim - " . expand("%t")
 	inoremap wj <Esc>
 
 " SuperTab
-  let g:SuperTabDefaultCompletionType = "context"
-  let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+	let g:SuperTabDefaultCompletionType = "context"
+	let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 " NERDTree
 	map <leader>f :NERDTreeToggle<CR>
@@ -201,19 +206,19 @@ au BufEnter * let &titlestring = "vim - " . expand("%t")
 	map <F3> :TagbarToggle<CR>
 
 " LSP
-  let g:LanguageClient_serverCommands = {
-      \ 'c': ['/usr/bin/clangd'],
-      \ 'go': ['/usr/bin/gopls'],
-      \ 'cpp': ['/usr/bin/clangd'],
-      \ 'python': ['/usr/bin/pyls'],
-      \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
-      \ 'javascript': ['/usr/bin/javascript-typescript-stdio'],
-      \ }
+	let g:LanguageClient_serverCommands = {
+  	  \ 'c': ['/usr/bin/clangd'],
+  	  \ 'go': ['/usr/bin/gopls'],
+  	  \ 'cpp': ['/usr/bin/clangd'],
+  	  \ 'python': ['/usr/bin/pyls'],
+  	  \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
+  	  \ 'javascript': ['/usr/bin/javascript-typescript-stdio'],
+  	  \ }
 
 " LanguageClient-neovim
-  nmap <F4> <Plug>(lcn-menu)
-  nmap <silent> gd <Plug>(lcn-definition)
+	nmap <F4> <Plug>(lcn-menu)
+	nmap <silent> gd <Plug>(lcn-definition)
 
 " Goyo
-  let g:goyo_width = 100
-  map <leader>g :Goyo<CR>
+	let g:goyo_width = 100
+	map <leader>g :Goyo<CR>
