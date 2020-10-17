@@ -14,7 +14,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'jreybert/vimagit'
 	Plug 'tpope/vim-commentary'
 	Plug 'preservim/nerdtree'
-	Plug 'vim-scripts/Smart-Tabs'
 	Plug 'ervandew/supertab'
 	Plug 'neomake/neomake'
 	Plug 'jamessan/vim-gnupg'
