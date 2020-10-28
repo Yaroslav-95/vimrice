@@ -43,6 +43,7 @@ call plug#end()
 	set relativenumber
 	set scrolloff=5
 	set colorcolumn=+1
+	set textwidth=80
 
 " Set screen title
 	let &titlestring = "vim - " . expand("%:t")
@@ -79,7 +80,7 @@ call plug#end()
 	set statusline+=\[%{&fileformat}\]
 	set statusline+=\ 
 
-	" default indentation
+" default indentation
 	filetype plugin indent on
 	set noexpandtab
 	set copyindent
