@@ -222,3 +222,15 @@ call plug#end()
 " Goyo
 	let g:goyo_width = 100
 	map <leader>g :Goyo<CR>
+
+" File format preferences
+	autocmd FileType rust setlocal noet ci pi sts=0 ts=4 sw=4 tw=80
+	autocmd FileType meson setlocal noet ci pi sts=0 ts=4 sw=4 tw=80
+	autocmd FileType tex setlocal spell spelllang=en_us,es,ru tw=80 |
+				\ let b:SuperTabContextDefaultCompletionType = "<c-p>"
+	autocmd FileType text setlocal spell spelllang=en_us,es,ru tw=80 |
+				\ let b:SuperTabContextDefaultCompletionType = "<c-p>"
+	autocmd FileType mail setlocal spell spelllang=en_us,es,ru tw=72 |
+				\ let b:SuperTabContextDefaultCompletionType = "<c-p>"
+	autocmd FileType markdown setlocal spell spelllang=en_us,es,ru tw=80 |
+				\ let b:SuperTabContextDefaultCompletionType = "<c-p>"
