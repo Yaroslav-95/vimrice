@@ -21,6 +21,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'rust-lang/rust.vim'
 	Plug 'cespare/vim-toml'
 	Plug 'xavierd/clang_complete'
+	Plug 'pangloss/vim-javascript'
 	Plug 'autozimu/LanguageClient-neovim', {
 		\ 'branch': 'next',
 		\ 'do': 'bash install.sh',
@@ -212,7 +213,7 @@ call plug#end()
   	  \ 'cpp': ['/usr/bin/clangd'],
   	  \ 'python': ['/usr/bin/pyls'],
   	  \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
-  	  \ 'javascript': ['/usr/bin/javascript-typescript-stdio'],
+  	  \ 'javascript': ['/usr/bin/typescript-language-server', '--stdio'],
   	  \ }
 
 " LanguageClient-neovim
