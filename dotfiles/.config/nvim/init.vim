@@ -22,6 +22,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'cespare/vim-toml'
 	Plug 'xavierd/clang_complete'
 	Plug 'pangloss/vim-javascript'
+	Plug 'https://gitlab.com/HiPhish/info.vim'
 	Plug 'autozimu/LanguageClient-neovim', {
 		\ 'branch': 'next',
 		\ 'do': 'bash install.sh',
