@@ -35,17 +35,30 @@ call plug#end()
 	syntax on
 	set foldmethod=syntax
 	set omnifunc=syntaxcomplete#Complete
-	set background=dark
-	set termguicolors
 	set guicursor=n-v-c-sm:hor20,i-ci-ve:ver25,r-cr-o:block
 	set cursorline
-	let g:ultramar_italic=1
-	colorscheme ultramar
 	set number
 	set relativenumber
 	set scrolloff=5
 	set colorcolumn=+1
 	set textwidth=80
+	set mouse=a
+
+" Colors
+	colorscheme ultramar
+	let g:ultramar_italic=1
+	if $COLORSCHEME == "light"
+		set background=light
+	endif
+	set termguicolors
+	function! ChangeBG()
+		if &background == "light"
+			set background=dark
+			return
+		endif
+		set background=light
+	endfunction
+	map <F10> :call ChangeBG()<CR>
 
 " Set screen title
 	let &titlestring = "vim - " . expand("%:t")
