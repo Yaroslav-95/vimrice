@@ -13,6 +13,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'jreybert/vimagit'
 	Plug 'tpope/vim-commentary'
+	Plug 'junegunn/fzf'
 	Plug 'preservim/nerdtree'
 	Plug 'ervandew/supertab'
 	Plug 'neomake/neomake'
@@ -112,7 +113,8 @@ call plug#end()
 	set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯХЪБЮ;ABCDEFGHIJKLMNOPQRSTUVWXYZ{}<>,фисвуапршолдьтщзйкыегмцчняхъэ;abcdefghijklmnopqrstuvwxyz[]'
 
 " Toggle relative line numbers
-	map <leader>r :set invrelativenumber<CR>
+	map <leader>e :set invrelativenumber<CR>
+	map <leader>у :set invrelativenumber<CR>
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
@@ -127,12 +129,10 @@ call plug#end()
 
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
-" with russian layout
 	nnoremap Ы :%s//g<Left><Left>
 
 " Compile document
 	map <leader>c :!doccompiler <c-r>%<CR>
-" with russian layout
 	map <leader>с :!doccompiler <c-r>%<CR>
 
 " Spell-check set to F2:
@@ -140,7 +140,6 @@ call plug#end()
 
 " Save changes
 	noremap <leader>s :update<CR>
-" with russian layout
 	noremap <leader>ы :update<CR>
 
 " Copy to clipboard
@@ -180,8 +179,7 @@ call plug#end()
 
 " Join line with alt
 	nnoremap <M-j> J
-" with russian layout
-	nnoremap <M-о> J
+	nnoremap <M-о> О
 
 " Easier tab navigation (similar to qutebrowser)
 	nnoremap J :tabn<cr>
@@ -215,7 +213,12 @@ call plug#end()
 	let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 " NERDTree
-	map <leader>f :NERDTreeToggle<CR>
+	map <leader>r :NERDTreeToggle<CR>
+	map <leader>к :NERDTreeToggle<CR>
+
+" FZF
+	map <leader>f :FZF<CR>
+	map <leader>а :FZF<CR>
 
 " Tagbar
 	map <F3> :TagbarToggle<CR>
