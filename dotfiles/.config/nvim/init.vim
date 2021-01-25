@@ -220,6 +220,10 @@ call plug#end()
 	map <leader>f :FZF<CR>
 	map <leader>а :FZF<CR>
 
+" Open new terminal in current directory
+	map <leader>t :!setsid $TERMINAL &<CR>
+	map <leader>е :!setsid $TERMINAL &<CR>
+
 " Tagbar
 	map <F3> :TagbarToggle<CR>
 
