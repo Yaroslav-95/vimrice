@@ -177,17 +177,6 @@ call plug#end()
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Join line with alt
-	nnoremap <M-j> J
-	nnoremap <M-о> О
-
-" Easier tab navigation (similar to qutebrowser)
-	nnoremap J :tabn<cr>
-	nnoremap K :tabp<cr>
-" with russian layout
-	nnoremap О :tabn<cr>
-	nnoremap Л :tabp<cr>
-
 " C-T for new tab
 	nnoremap <C-t> :tabe<Space>
 
@@ -238,7 +227,7 @@ call plug#end()
   	  \ }
 
 " LanguageClient-neovim
-	nmap <F4> <Plug>(lcn-menu)
+	nmap <leader>m <Plug>(lcn-menu)
 	nmap <silent> gd <Plug>(lcn-definition)
 
 " Goyo
