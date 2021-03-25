@@ -36,7 +36,7 @@ call plug#end()
 	syntax on
 	set foldmethod=syntax
 	set omnifunc=syntaxcomplete#Complete
-	set guicursor=n-v-c-sm:hor20,i-ci-ve:ver25,r-cr-o:block
+	set guicursor=n-v-sm:block,i-ci-c-ve:ver25,r-cr-o:block
 	set cursorline
 	set number
 	set relativenumber
