@@ -245,3 +245,7 @@ call plug#end()
 				\ let b:SuperTabContextDefaultCompletionType = "<c-p>"
 	autocmd FileType markdown setlocal spell spelllang=en_us,es,ru tw=80 |
 				\ let b:SuperTabContextDefaultCompletionType = "<c-p>"
+
+" For project-specific configuration
+	set exrc
+	set secure
