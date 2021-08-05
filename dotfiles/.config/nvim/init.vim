@@ -219,6 +219,7 @@ call plug#end()
 " LSP
 	let g:LanguageClient_serverCommands = {
   	  \ 'c': ['/usr/bin/clangd'],
+  	  \ 'ch': ['/usr/bin/clangd'],
   	  \ 'go': ['/usr/bin/gopls'],
   	  \ 'cpp': ['/usr/bin/clangd'],
   	  \ 'python': ['/usr/bin/pyls'],
