@@ -38,12 +38,13 @@ call plug#end()
 	set omnifunc=syntaxcomplete#Complete
 	set guicursor=n-v-sm:block,i-ci-c-ve:ver25,r-cr-o:block
 	set cursorline
-	set number
+	set redrawtime=1000
 	set relativenumber
 	set scrolloff=5
 	set colorcolumn=+1
 	set textwidth=80
 	set mouse=a
+	set number
 
 " Colors
 	colorscheme ultramar
@@ -218,9 +219,10 @@ call plug#end()
 
 " LSP
 	let g:LanguageClient_serverCommands = {
-  	  \ 'c': ['/usr/bin/clangd'],
+  	  \ 'c': ['/usr/bin/clangd', '--cross-file-rename'],
+  	  \ 'ch': ['/usr/bin/clangd', '--cross-file-rename'],
   	  \ 'go': ['/usr/bin/gopls'],
-  	  \ 'cpp': ['/usr/bin/clangd'],
+  	  \ 'cpp': ['/usr/bin/clangd', '--cross-file-rename'],
   	  \ 'python': ['/usr/bin/pyls'],
   	  \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
   	  \ 'javascript': ['/usr/bin/typescript-language-server', '--stdio'],
