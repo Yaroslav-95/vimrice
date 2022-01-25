@@ -24,10 +24,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'xavierd/clang_complete'
 	Plug 'pangloss/vim-javascript'
 	Plug 'https://gitlab.com/HiPhish/info.vim'
-	Plug 'autozimu/LanguageClient-neovim', {
-		\ 'branch': 'next',
-		\ 'do': 'bash install.sh',
-		\ }
+	Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 " Some basics:
@@ -36,6 +33,7 @@ call plug#end()
 	syntax on
 	set foldmethod=syntax
 	set omnifunc=syntaxcomplete#Complete
+	set omnifunc=v:lua.vim.lsp.omnifunc
 	set guicursor=n-v-sm:block,i-ci-c-ve:ver25,r-cr-o:block
 	set cursorline
 	set redrawtime=1000
@@ -217,24 +215,23 @@ call plug#end()
 " Tagbar
 	map <F3> :TagbarToggle<CR>
 
-" LSP
-	let g:LanguageClient_serverCommands = {
-  	  \ 'c': ['/usr/bin/clangd', '--cross-file-rename'],
-  	  \ 'ch': ['/usr/bin/clangd', '--cross-file-rename'],
-  	  \ 'go': ['/usr/bin/gopls'],
-  	  \ 'cpp': ['/usr/bin/clangd', '--cross-file-rename'],
-  	  \ 'python': ['/usr/bin/pyls'],
-  	  \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
-  	  \ 'javascript': ['/usr/bin/typescript-language-server', '--stdio'],
-  	  \ }
-
-" LanguageClient-neovim
-	nmap <leader>m <Plug>(lcn-menu)
-	nmap <silent> gd <Plug>(lcn-definition)
-
 " Goyo
 	let g:goyo_width = 100
 	map <leader>g :Goyo<CR>
+
+" LSP
+	lua require('lspconfig').clangd.setup{filetypes = { "c", "cpp", "objc", "objcpp", "ch" }}
+	lua require('lspconfig').gopls.setup{}
+	lua require('lspconfig').pylsp.setup{}
+	lua require('lspconfig').rls.setup{}
+	lua require('lspconfig').tsserver.setup{}
+
+" LSP keybinds
+	nmap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+	nmap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+	nmap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+	nmap <silent> <leader>n <cmd>lua vim.lsp.buf.rename()<CR>
+	nmap <silent> <leader>b <cmd>lua vim.lsp.buf.formatting()<CR>
 
 " File format preferences
 	autocmd FileType rust setlocal noet ci pi sts=0 ts=4 sw=4 tw=80
