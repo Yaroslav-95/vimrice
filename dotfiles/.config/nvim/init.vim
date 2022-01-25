@@ -21,7 +21,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'majutsushi/tagbar'
 	Plug 'rust-lang/rust.vim'
 	Plug 'cespare/vim-toml'
-	Plug 'xavierd/clang_complete'
 	Plug 'pangloss/vim-javascript'
 	Plug 'https://gitlab.com/HiPhish/info.vim'
 	Plug 'neovim/nvim-lspconfig'
@@ -33,7 +32,6 @@ call plug#end()
 	syntax on
 	set foldmethod=syntax
 	set omnifunc=syntaxcomplete#Complete
-	set omnifunc=v:lua.vim.lsp.omnifunc
 	set guicursor=n-v-sm:block,i-ci-c-ve:ver25,r-cr-o:block
 	set cursorline
 	set redrawtime=1000
@@ -220,6 +218,7 @@ call plug#end()
 	map <leader>g :Goyo<CR>
 
 " LSP
+	set omnifunc=v:lua.vim.lsp.omnifunc
 	lua require('lspconfig').clangd.setup{filetypes = { "c", "cpp", "objc", "objcpp", "ch" }}
 	lua require('lspconfig').gopls.setup{}
 	lua require('lspconfig').pylsp.setup{}
@@ -229,11 +228,14 @@ call plug#end()
 " LSP keybinds
 	nmap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 	nmap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
-	nmap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+	nmap <silent> gK <cmd>lua vim.lsp.buf.hover()<CR>
 	nmap <silent> <leader>n <cmd>lua vim.lsp.buf.rename()<CR>
 	nmap <silent> <leader>b <cmd>lua vim.lsp.buf.formatting()<CR>
 
 " File format preferences
+	" MFing neovim overrding my omnifunc with whatever ccomplete is
+	autocmd FileType c,ch,header,cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	" No Rust, spaces is not superior to tabs, 100 lines is too much
 	autocmd FileType rust setlocal noet ci pi sts=0 ts=4 sw=4 tw=80
 	autocmd FileType meson setlocal noet ci pi sts=0 ts=4 sw=4 tw=80
 	autocmd FileType tex setlocal spell spelllang=en_us,es,ru tw=80 |
