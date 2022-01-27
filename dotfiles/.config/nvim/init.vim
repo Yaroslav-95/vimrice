@@ -229,8 +229,12 @@ call plug#end()
 	nmap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 	nmap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 	nmap <silent> gK <cmd>lua vim.lsp.buf.hover()<CR>
+	nmap <silent> gz <cmd>lua vim.lsp.buf.references()<CR>
 	nmap <silent> <leader>n <cmd>lua vim.lsp.buf.rename()<CR>
 	nmap <silent> <leader>b <cmd>lua vim.lsp.buf.formatting()<CR>
+	nmap <silent> <leader>a <cmd>lua vim.lsp.buf.code_action()<CR>
+	nmap <silent> ]g <cmd>lua vim.diagnostic.goto_next()<CR>
+	nmap <silent> [g <cmd>lua vim.diagnostic.goto_prev()<CR>
 
 " File format preferences
 	" MFing neovim overrding my omnifunc with whatever ccomplete is
