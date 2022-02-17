@@ -251,6 +251,9 @@ call plug#end()
 	autocmd FileType markdown setlocal spell spelllang=en_us,es,ru tw=80 |
 				\ let b:SuperTabContextDefaultCompletionType = "<c-p>"
 
+" C indentation rules
+	set cino=:0l0
+
 " For project-specific configuration
 	set exrc
 	set secure
