@@ -252,7 +252,7 @@ call plug#end()
 				\ let b:SuperTabContextDefaultCompletionType = "<c-p>"
 
 " C indentation rules
-	set cino=:0l0
+	set cino=:0l1
 
 " For project-specific configuration
 	set exrc
