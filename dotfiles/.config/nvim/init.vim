@@ -23,7 +23,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'cespare/vim-toml'
 	Plug 'pangloss/vim-javascript'
 	Plug 'https://gitlab.com/HiPhish/info.vim'
-	Plug 'neovim/nvim-lspconfig'
+	if has('nvim-0.6')
+		Plug 'neovim/nvim-lspconfig'
+	endif
 call plug#end()
 
 " Some basics:
@@ -218,12 +220,14 @@ call plug#end()
 	map <leader>g :Goyo<CR>
 
 " LSP
-	set omnifunc=v:lua.vim.lsp.omnifunc
-	lua require('lspconfig').clangd.setup{filetypes = { "c", "cpp", "objc", "objcpp", "ch" }}
-	lua require('lspconfig').gopls.setup{}
-	lua require('lspconfig').pylsp.setup{}
-	lua require('lspconfig').rls.setup{}
-	lua require('lspconfig').tsserver.setup{}
+	if has('nvim-0.6')
+		set omnifunc=v:lua.vim.lsp.omnifunc
+		lua require('lspconfig').clangd.setup{filetypes = { "c", "cpp", "objc", "objcpp", "ch" }}
+		lua require('lspconfig').gopls.setup{}
+		lua require('lspconfig').pylsp.setup{}
+		lua require('lspconfig').rls.setup{}
+		lua require('lspconfig').tsserver.setup{}
+	endif
 
 " LSP keybinds
 	nmap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
