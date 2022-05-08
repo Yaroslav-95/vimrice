@@ -34,6 +34,7 @@ call plug#end()
 	syntax on
 	set foldmethod=syntax
 	set omnifunc=syntaxcomplete#Complete
+	set completeopt=menuone,noinsert
 	set guicursor=n-v-sm:block,i-ci-c-ve:ver25,r-cr-o:block
 	set cursorline
 	set redrawtime=1000
@@ -174,7 +175,7 @@ call plug#end()
 	autocmd VimLeave *.tex !texclear %
 
 " Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+	autocmd FileType * setlocal formatoptions-=o
 
 " C-T for new tab
 	nnoremap <C-t> :tabe<Space>
@@ -243,7 +244,7 @@ call plug#end()
 " File format preferences
 	" MFing neovim overrding my omnifunc with whatever ccomplete is
 	autocmd FileType c,ch,header,cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
-	" No Rust, spaces is not superior to tabs, 100 lines is too much
+	" No, Rust, spaces is not superior to tabs, 100 lines is too much
 	autocmd FileType rust setlocal noet ci pi sts=0 ts=4 sw=4 tw=80
 	autocmd FileType meson setlocal noet ci pi sts=0 ts=4 sw=4 tw=80
 	autocmd FileType tex setlocal spell spelllang=en_us,es,ru tw=80 |
