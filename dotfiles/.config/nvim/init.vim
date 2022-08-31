@@ -62,13 +62,13 @@ call plug#end()
 	map <F10> :call ChangeBG()<CR>
 
 " Set screen title
-	let &titlestring = "vim - " . expand("%:t")
-	if &term == "screen"
-		set t_ts=^[k
-		set t_fs=^[\
-	endif
 	set title
-	au BufEnter * let &titlestring = "vim - " . expand("%t")
+	" let &titlestring = "NVIM - " . expand("%:t")
+	" if &term == "screen"
+	" 	set t_ts=^[k
+	" 	set t_fs=^[\
+	" endif
+	" au BufEnter * let &titlestring = "NVIM - " . expand("%t")
 
 " Functions for git branch name on statusline
 	function! GitBranch()
@@ -227,7 +227,7 @@ call plug#end()
 		lua require('lspconfig').gopls.setup{}
 		lua require('lspconfig').pylsp.setup{}
 		lua require('lspconfig').rls.setup{}
-		lua require('lspconfig').tsserver.setup{}
+		lua require('lspconfig').quick_lint_js.setup{}
 	endif
 
 " LSP keybinds
