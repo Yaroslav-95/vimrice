@@ -22,6 +22,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'rust-lang/rust.vim'
 	Plug 'cespare/vim-toml'
 	Plug 'pangloss/vim-javascript'
+	Plug 'ap/vim-css-color'
 	Plug 'https://gitlab.com/HiPhish/info.vim'
 	if has('nvim-0.6')
 		Plug 'neovim/nvim-lspconfig'
@@ -88,7 +89,7 @@ call plug#end()
 	set statusline+=%<
 	set statusline+=\ %f%r%m
 	set statusline+=%=
-	set statusline+=\ %l:%v/%L
+	set statusline+=\ %l/%L,%c%V
 	set statusline+=\ 
 	set statusline+=%#StatusLineNC#
 	set statusline+=\ %Y
