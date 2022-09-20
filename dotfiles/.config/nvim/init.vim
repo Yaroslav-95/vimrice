@@ -8,6 +8,8 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" TODO: bind to insert datetime
+
 call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'junegunn/goyo.vim'
 	Plug 'PotatoesMaster/i3-vim-syntax'
@@ -47,8 +49,9 @@ call plug#end()
 	set number
 
 " Colors
-	colorscheme ultramar
 	let g:ultramar_italic=1
+	let g:ultramar_opaque_bg=0
+	colorscheme ultramar
 	if $COLORSCHEME == "light"
 		set background=light
 	endif

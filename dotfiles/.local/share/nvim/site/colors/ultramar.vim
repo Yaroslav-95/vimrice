@@ -29,6 +29,7 @@ endif
 if !exists('g:ultramar_bold')
   let g:ultramar_bold=1
 endif
+
 if !exists('g:ultramar_italic')
   if has('gui_running') || $TERM_ITALICS == 'true'
     let g:ultramar_italic=1
@@ -36,12 +37,15 @@ if !exists('g:ultramar_italic')
     let g:ultramar_italic=0
   endif
 endif
+
 if !exists('g:ultramar_undercurl')
   let g:ultramar_undercurl=1
 endif
+
 if !exists('g:ultramar_underline')
   let g:ultramar_underline=1
 endif
+
 if !exists('g:ultramar_inverse')
   let g:ultramar_inverse=1
 endif
@@ -64,6 +68,9 @@ endif
 
 if !exists('g:ultramar_invert_indent_guides')
   let g:ultramar_invert_indent_guides=0
+endif
+if !exists('g:ultramar_opaque_bg')
+  let g:ultramar_opaque_bg=1
 endif
 
 let s:is_dark=(&background == 'dark')
@@ -137,8 +144,6 @@ endif
 " }}}
 " Setup Colors: {{{
 
-let s:vim_bg = ['bg', 'bg']
-let s:vim_fg = ['fg', 'fg']
 let s:none = ['NONE', 'NONE']
 
 " determine relative colors
@@ -424,7 +429,11 @@ call s:HL('UltramarAquaSign', s:aqua, s:sign_column, s:invert_signs)
 " General UI: {{{
 
 " Normal text
-call s:HL('Normal', s:fg1, s:bg0)
+if g:ultramar_opaque_bg == 1
+  call s:HL('Normal', s:fg1, s:bg0)
+else
+  call s:HL('Normal', s:fg1)
+endif
 
 " Correct background (see issue #7):
 " --- Problem with changing between dark and light on 256 color terminal
@@ -541,8 +550,8 @@ else
 endif
 
 call s:HL('Comment', s:gray, s:none, s:italicize_comments)
-call s:HL('Todo', s:vim_fg, s:vim_bg, s:bold . s:italic)
-call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
+call s:HL('Todo', s:fg0, s:bg0, s:bold . s:italic)
+call s:HL('Error', s:red, s:bg0, s:bold . s:inverse)
 
 " Generic statement
 hi! link Statement UltramarRed
