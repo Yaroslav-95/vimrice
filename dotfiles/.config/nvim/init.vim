@@ -8,8 +8,6 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" TODO: bind to insert datetime
-
 call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'junegunn/goyo.vim'
 	Plug 'PotatoesMaster/i3-vim-syntax'
@@ -223,6 +221,10 @@ call plug#end()
 " Goyo
 	let g:goyo_width = 100
 	map <leader>g :Goyo<CR>
+
+" Insert datetime
+	map <leader>d :r!date +"\%Y-\%m-\%dT\%H:\%M:\%S"<CR>kJ
+	map <leader>в :r!date +"\%Y-\%m-\%dT\%H:\%M:\%S"<CR>kJ
 
 " LSP
 	if has('nvim-0.6')
