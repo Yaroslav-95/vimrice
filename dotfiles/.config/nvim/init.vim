@@ -245,6 +245,7 @@ call plug#end()
 	nmap <silent> <leader>b <cmd>lua vim.lsp.buf.formatting()<CR>
 	nmap <silent> <leader>a <cmd>lua vim.lsp.buf.code_action()<CR>
 	nmap <silent> <leader>w <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+	nmap <silent> <leader>l <cmd>lua vim.diagnostic.setloclist()<CR>
 	nmap <silent> ]g <cmd>lua vim.diagnostic.goto_next()<CR>
 	nmap <silent> [g <cmd>lua vim.diagnostic.goto_prev()<CR>
 
