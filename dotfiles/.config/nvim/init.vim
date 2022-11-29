@@ -26,6 +26,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'https://gitlab.com/HiPhish/info.vim'
 	if has('nvim-0.6')
 		Plug 'neovim/nvim-lspconfig'
+		Plug 'ojroques/nvim-lspfuzzy'
 	endif
 call plug#end()
 
@@ -248,6 +249,9 @@ call plug#end()
 	nmap <silent> <leader>l <cmd>lua vim.diagnostic.setloclist()<CR>
 	nmap <silent> ]g <cmd>lua vim.diagnostic.goto_next()<CR>
 	nmap <silent> [g <cmd>lua vim.diagnostic.goto_prev()<CR>
+
+" LSP FZF
+	lua require('lspfuzzy').setup{}
 
 " File format preferences
 	" MFing neovim overrding my omnifunc with whatever ccomplete is
