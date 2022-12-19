@@ -63,6 +63,7 @@ call plug#end()
 		set background=light
 	endfunction
 	map <F10> :call ChangeBG()<CR>
+	let g:markdown_fenced_languages = ['c', 'go', 'sh', 'bash=sh', 'python', 'html', 'css', 'javascript']
 
 " Set screen title
 	set title
