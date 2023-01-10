@@ -11,12 +11,10 @@ endif
 call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'junegunn/goyo.vim'
 	Plug 'PotatoesMaster/i3-vim-syntax'
-	Plug 'jreybert/vimagit'
 	Plug 'tpope/vim-commentary'
 	Plug 'junegunn/fzf'
 	Plug 'preservim/nerdtree'
 	Plug 'ervandew/supertab'
-	Plug 'neomake/neomake'
 	Plug 'jamessan/vim-gnupg'
 	Plug 'majutsushi/tagbar'
 	Plug 'rust-lang/rust.vim'
@@ -200,6 +198,8 @@ call plug#end()
 " For normal mode when can't remap caps to escape
 	inoremap jw <Esc>
 	inoremap wj <Esc>
+	vnoremap jw <Esc>
+	vnoremap wj <Esc>
 
 " SuperTab
 	let g:SuperTabDefaultCompletionType = "context"
