@@ -22,6 +22,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'pangloss/vim-javascript'
 	Plug 'ap/vim-css-color'
 	Plug 'https://gitlab.com/HiPhish/info.vim'
+	Plug 'rhysd/git-messenger.vim'
 	if has('nvim-0.6')
 		Plug 'neovim/nvim-lspconfig'
 		Plug 'ojroques/nvim-lspfuzzy'
@@ -222,7 +223,8 @@ call plug#end()
 
 " Goyo
 	let g:goyo_width = 100
-	map <leader>g :Goyo<CR>
+	let g:goyo_linenr = 1
+	map <leader>gg :Goyo<CR>
 
 " Insert datetime
 	map <leader>d :r!date +"\%Y-\%m-\%dT\%H:\%M:\%S"<CR>kJ
