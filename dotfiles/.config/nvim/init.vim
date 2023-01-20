@@ -13,6 +13,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'tpope/vim-commentary'
 	Plug 'junegunn/fzf'
+	Plug 'junegunn/fzf.vim'
 	Plug 'preservim/nerdtree'
 	Plug 'ervandew/supertab'
 	Plug 'jamessan/vim-gnupg'
@@ -199,8 +200,6 @@ call plug#end()
 " For normal mode when can't remap caps to escape
 	inoremap jw <Esc>
 	inoremap wj <Esc>
-	vnoremap jw <Esc>
-	vnoremap wj <Esc>
 
 " SuperTab
 	let g:SuperTabDefaultCompletionType = "context"
@@ -211,8 +210,11 @@ call plug#end()
 	map <leader>к :NERDTreeToggle<CR>
 
 " FZF
-	map <leader>f :FZF<CR>
-	map <leader>а :FZF<CR>
+	let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-\']
+	map <leader>f :Files<CR>
+	map <leader>а :Files<CR>
+	map <leader>F :Rg 
+	map <leader>А :Rg 
 
 " Open new terminal in current directory
 	map <leader>t :!setsid $TERMINAL &<CR>
