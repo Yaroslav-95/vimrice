@@ -210,7 +210,7 @@ call plug#end()
 	map <leader>к :NERDTreeToggle<CR>
 
 " FZF
-	let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-\']
+	let g:fzf_preview_window = ['hidden,right,50%,<70(hidden,up,40%)', 'ctrl-\']
 	map <leader>f :Files<CR>
 	map <leader>а :Files<CR>
 	map <leader>F :Rg 
@@ -240,6 +240,7 @@ call plug#end()
 		lua require('lspconfig').pylsp.setup{}
 		lua require('lspconfig').rls.setup{}
 		lua require('lspconfig').quick_lint_js.setup{}
+		lua require('lspfuzzy').setup{}
 	endif
 
 " LSP keybinds
@@ -256,7 +257,6 @@ call plug#end()
 	nmap <silent> [g <cmd>lua vim.diagnostic.goto_prev()<CR>
 
 " LSP FZF
-	lua require('lspfuzzy').setup{}
 
 " File format preferences
 	" MFing neovim overrding my omnifunc with whatever ccomplete is
