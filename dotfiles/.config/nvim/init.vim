@@ -256,7 +256,13 @@ call plug#end()
 	nmap <silent> ]g <cmd>lua vim.diagnostic.goto_next()<CR>
 	nmap <silent> [g <cmd>lua vim.diagnostic.goto_prev()<CR>
 
-" LSP FZF
+" Termdebugger keybinds
+	nmap <silent> <leader>gn <cmd>:Over<CR>
+	nmap <silent> <leader>gs <cmd>:Step<CR>
+	nmap <silent> <leader>gc <cmd>:Continue<CR>
+	nmap <silent> <leader>gu <cmd>:Until<CR>
+	nmap <silent> <leader>gb <cmd>:Break<CR>
+	nmap <silent> <leader>gC <cmd>:Clear<CR>
 
 " File format preferences
 	" MFing neovim overrding my omnifunc with whatever ccomplete is
