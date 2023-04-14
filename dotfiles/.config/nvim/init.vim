@@ -28,6 +28,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 		Plug 'neovim/nvim-lspconfig'
 		Plug 'ojroques/nvim-lspfuzzy'
 	endif
+	if has('nvim-0.9')
+		Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	endif
 call plug#end()
 
 " Some basics:
@@ -86,7 +89,7 @@ call plug#end()
 " Statusline
 	let laststatus=2
 	set statusline=
-	set statusline+=%#CursorLineNR#
+	set statusline+=%#SignColumn#
 	set statusline+=%{StatuslineGit()}
 	set statusline+=%#StatusLine#
 	set statusline+=%<
@@ -255,6 +258,15 @@ call plug#end()
 	nmap <silent> <leader>l <cmd>lua vim.diagnostic.setloclist()<CR>
 	nmap <silent> ]g <cmd>lua vim.diagnostic.goto_next()<CR>
 	nmap <silent> [g <cmd>lua vim.diagnostic.goto_prev()<CR>
+
+" Treesitter
+	if has('nvim-0.9')
+		" XXX: neovim's built-in C et al treesitter parsers are better, although
+		" not ideal either.
+		lua require('nvim-treesitter.configs').setup{ ensure_installed = {  "go", "rust", "python", "lua", "comment" }, highlight = { enable = true, disable = { "c", "cpp", "vim", "make" } }}
+		set foldmethod=expr
+		set foldexpr=nvim_treesitter#foldexpr()
+	endif
 
 " Termdebugger keybinds
 	nmap <silent> <leader>gn <cmd>:Over<CR>

@@ -83,19 +83,19 @@ let s:palette = {}
 
 " fill it with absolute colors
 let s:palette.dark0       = ['#151517', 235]
-let s:palette.dark1       = ['#232328', 237]
-let s:palette.dark2       = ['#33333a', 239]
-let s:palette.dark3       = ['#404049', 241]
-let s:palette.dark4       = ['#676775', 243]
+let s:palette.dark1       = ['#212128', 237]
+let s:palette.dark2       = ['#32323e', 239]
+let s:palette.dark3       = ['#424a4d', 241]
+let s:palette.dark4       = ['#4d4d42', 243]
 
-let s:palette.gray_245    = ['#9499a5', 245]
-let s:palette.gray_244    = ['#6c6e72', 244]
+let s:palette.gray_245    = ['#7b7d6e', 245]
+let s:palette.gray_244    = ['#6e6e5e', 244]
 
-let s:palette.light0      = ['#faf6e5', 229]
-let s:palette.light1      = ['#e6e3d6', 223]
-let s:palette.light2      = ['#d2d0c8', 250]
-let s:palette.light3      = ['#b0afa8', 248]
-let s:palette.light4      = ['#91908d', 246]
+let s:palette.light0      = ['#fcf8e2', 229]
+let s:palette.light1      = ['#f2eccf', 223]
+let s:palette.light2      = ['#e0d8b3', 250]
+let s:palette.light3      = ['#d6cda3', 248]
+let s:palette.light4      = ['#ccbe99', 246]
 
 let s:palette.neutral_red    = ['#b73030', 124]
 let s:palette.neutral_green  = ['#6d974b', 106]
@@ -400,6 +400,7 @@ call s:HL('UltramarBg1', s:bg1)
 call s:HL('UltramarBg2', s:bg2)
 call s:HL('UltramarBg3', s:bg3)
 call s:HL('UltramarBg4', s:bg4)
+call s:HL('UltramarBold', s:fg0, s:none, s:bold)
 
 call s:HL('UltramarRed', s:red)
 call s:HL('UltramarRedBold', s:red, s:none, s:bold)
@@ -430,9 +431,9 @@ call s:HL('UltramarAquaSign', s:aqua, s:sign_column, s:invert_signs)
 
 " Normal text
 if g:ultramar_opaque_bg == 1
-  call s:HL('Normal', s:fg1, s:bg0)
+  call s:HL('Normal', s:fg0, s:bg0)
 else
-  call s:HL('Normal', s:fg1)
+  call s:HL('Normal', s:fg0)
 endif
 
 " Correct background (see issue #7):
@@ -446,14 +447,14 @@ endif
 
 if version >= 700
   " Screen line that the cursor is
-  call s:HL('CursorLine',   s:none, s:bg1)
+  call s:HL('CursorLine', s:none, s:bg1)
   " Screen column that the cursor is
   hi! link CursorColumn CursorLine
 
   " Tab pages line filler
   call s:HL('TabLineFill', s:fg4, s:bg2, s:invert_tabline)
   " Active tab page label
-  call s:HL('TabLineSel', s:green, s:bg1, s:invert_tabline)
+  call s:HL('TabLineSel', s:fg0, s:bg1, s:invert_tabline)
   " Not active tab page label
   hi! link TabLine TabLineFill
 
@@ -466,10 +467,10 @@ if version >= 703
   call s:HL('ColorColumn',  s:none, s:color_column)
 
   " Concealed element: \lambda → λ
-  call s:HL('Conceal', s:blue, s:none)
+  call s:HL('Conceal', s:gray, s:none)
 
   " Line number of CursorLine
-  call s:HL('CursorLineNr', s:yellow, s:bg1)
+  call s:HL('CursorLineNr', s:fg0, s:bg1, s:bold)
 endif
 
 hi! link NonText UltramarBg2
@@ -483,12 +484,12 @@ call s:HL('IncSearch', s:hls_cursor, s:bg0, s:inverse)
 
 call s:HL('Underlined', s:blue, s:none, s:underline)
 
-call s:HL('StatusLine',   s:bg2, s:fg1, s:inverse)
-call s:HL('StatusLineNC', s:bg1, s:fg4, s:inverse)
+call s:HL('StatusLine',   s:bg2, s:fg0, s:inverse)
+call s:HL('StatusLineNC', s:bg1, s:fg2, s:inverse)
 
 if version >= 700
   au InsertEnter * call s:HL('StatusLine',   s:green, s:bg1, s:inverse)
-  au InsertLeave * call s:HL('StatusLine',   s:bg2, s:fg1, s:inverse)
+  au InsertLeave * call s:HL('StatusLine',   s:bg2, s:fg0, s:inverse)
 endif
 
 " The column separating vertically split windows
@@ -498,10 +499,10 @@ call s:HL('VertSplit', s:bg3, s:vert_split)
 call s:HL('WildMenu', s:blue, s:bg2, s:bold)
 
 " Directory names, special names in listing
-hi! link Directory UltramarGreenBold
+hi! link Directory UltramarGreen
 
 " Titles for output from :set all, :autocmd, etc.
-hi! link Title UltramarGreenBold
+hi! link Title UltramarAquaBold
 
 " Error messages on the command line
 call s:HL('ErrorMsg',   s:red, s:bg0, s:bold)
@@ -518,10 +519,10 @@ hi! link WarningMsg UltramarRedBold
 " Gutter: {{{
 
 " Line number for :number and :# commands
-call s:HL('LineNr', s:bg4, s:number_column)
+call s:HL('LineNr', s:gray, s:number_column)
 
 " Column where signs are displayed
-call s:HL('SignColumn', s:none, s:sign_column)
+call s:HL('SignColumn', s:yellow, s:sign_column)
 
 " Line used for closed folds
 call s:HL('Folded', s:gray, s:bg1, s:italic)
@@ -543,15 +544,13 @@ hi! link lCursor Cursor
 " }}}
 " Syntax Highlighting: {{{
 
-if g:ultramar_improved_strings == 0
-  hi! link Special UltramarOrange
-else
-  call s:HL('Special', s:orange, s:bg1, s:italicize_strings)
-endif
 
 call s:HL('Comment', s:gray, s:none, s:italicize_comments)
 call s:HL('Todo', s:fg0, s:bg0, s:bold . s:italic)
 call s:HL('Error', s:red, s:bg0, s:bold . s:inverse)
+
+hi! link Special UltramarBlue
+hi! link SpecialChar UltramarPurple
 
 " Generic statement
 hi! link Statement UltramarRed
@@ -564,33 +563,33 @@ hi! link Label UltramarRed
 " try, catch, throw
 hi! link Exception UltramarRed
 " sizeof, "+", "*", etc.
-hi! link Operator Normal
+hi! link Operator UltramarRed
 " Any other keyword
 hi! link Keyword UltramarRed
 
 " Variable name
-hi! link Identifier UltramarBlue
+hi! link Identifier UltramarFg4
 " Function name
-hi! link Function UltramarGreenBold
+hi! link Function UltramarBlue
 
 " Generic preprocessor
-hi! link PreProc UltramarAqua
+hi! link PreProc UltramarGreen
 " Preprocessor #include
-hi! link Include UltramarAqua
+hi! link Include UltramarGreen
 " Preprocessor #define
-hi! link Define UltramarAqua
+hi! link Define UltramarGreen
 " Same as Define
-hi! link Macro UltramarAqua
+hi! link Macro UltramarPurple
 " Preprocessor #if, #else, #endif, etc.
-hi! link PreCondit UltramarAqua
+hi! link PreCondit UltramarGreen
 
 " Generic constant
 hi! link Constant UltramarPurple
-" Character constant: 'c', '/n'
+" Character constant: 'c', '\n'
 hi! link Character UltramarPurple
 " String constant: "this is a string"
 if g:ultramar_improved_strings == 0
-  call s:HL('String',  s:green, s:none, s:italicize_strings)
+  call s:HL('String',  s:orange, s:none, s:italicize_strings)
 else
   call s:HL('String',  s:fg1, s:bg1, s:italicize_strings)
 endif
@@ -602,13 +601,13 @@ hi! link Number UltramarPurple
 hi! link Float UltramarPurple
 
 " Generic type
-hi! link Type UltramarYellow
+hi! link Type UltramarAqua
 " static, register, volatile, etc
-hi! link StorageClass UltramarOrange
+hi! link StorageClass UltramarRed
 " struct, union, enum, etc.
 hi! link Structure UltramarAqua
 " typedef
-hi! link Typedef UltramarYellow
+hi! link Typedef UltramarAqua
 
 " }}}
 " Completion Menu: {{{
@@ -629,8 +628,6 @@ endif
 
 call s:HL('DiffDelete', s:red, s:bg0, s:inverse)
 call s:HL('DiffAdd',    s:green, s:bg0, s:inverse)
-"call s:HL('DiffChange', s:bg0, s:blue)
-"call s:HL('DiffText',   s:bg0, s:yellow)
 
 " Alternative setting
 call s:HL('DiffChange', s:aqua, s:bg0, s:inverse)
@@ -644,7 +641,7 @@ if has("spell")
   if g:ultramar_improved_warnings == 0
     call s:HL('SpellCap',   s:none, s:none, s:undercurl, s:red)
   else
-    call s:HL('SpellCap',   s:green, s:none, s:bold . s:italic)
+    call s:HL('SpellCap',   s:none, s:none, s:bold . s:italic)
   endif
   " Not recognized word
   call s:HL('SpellBad',   s:none, s:none, s:undercurl, s:blue)
