@@ -86,6 +86,14 @@ call plug#end()
 	return strlen(l:branchname) > 0?'   '.l:branchname.' ':''
 	endfunction
 
+" git-messenger settings
+	let g:git_messenger_floating_win_opts = { 'border': 'single' }
+	let g:git_messenger_popup_content_margins = v:false
+	hi! link diffAdded DiffAdd
+	hi! link diffRemoved DiffDelete
+	hi! link diffWordsAdded DiffText
+	hi! link diffWordsRemoved DiffText
+
 " Statusline
 	let laststatus=2
 	set statusline=
