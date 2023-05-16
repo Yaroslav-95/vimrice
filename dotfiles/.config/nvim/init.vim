@@ -24,6 +24,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'ap/vim-css-color'
 	Plug 'https://gitlab.com/HiPhish/info.vim'
 	Plug 'rhysd/git-messenger.vim'
+	Plug 'tpope/vim-ragtag'
 	if has('nvim-0.6')
 		Plug 'neovim/nvim-lspconfig'
 		Plug 'ojroques/nvim-lspfuzzy'
@@ -162,18 +163,20 @@ call plug#end()
 	nnoremap  <leader>Y  "+yg_
 	nnoremap  <leader>y  "+y
 	nnoremap  <leader>yy  "+yy
-" with russian layout
 	vnoremap  <leader>н  "+y
 	nnoremap  <leader>Н  "+yg_
 	nnoremap  <leader>н  "+y
 	nnoremap  <leader>нн  "+yy
+
+" Copy everything in the buffer to clipboard
+	nnoremap <leader>ya :%y +<CR>
+	nnoremap <leader>нф :%y +<CR>
 
 " Paste from clipboard
 	nnoremap <leader>p "+p
 	nnoremap <leader>P "+P
 	vnoremap <leader>p "+p
 	vnoremap <leader>P "+P
-" with russian layout
 	nnoremap <leader>з "+p
 	nnoremap <leader>З "+P
 	vnoremap <leader>з "+p
