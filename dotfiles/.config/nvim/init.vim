@@ -263,7 +263,7 @@ call plug#end()
 	nmap <silent> gK <cmd>lua vim.lsp.buf.hover()<CR>
 	nmap <silent> gz <cmd>lua vim.lsp.buf.references()<CR>
 	nmap <silent> <leader>n <cmd>lua vim.lsp.buf.rename()<CR>
-	nmap <silent> <leader>b <cmd>lua vim.lsp.buf.formatting()<CR>
+	nmap <silent> <leader>b <cmd>lua vim.lsp.buf.format()<CR>
 	nmap <silent> <leader>a <cmd>lua vim.lsp.buf.code_action()<CR>
 	nmap <silent> <leader>w <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 	nmap <silent> <leader>l <cmd>lua vim.diagnostic.setloclist()<CR>
