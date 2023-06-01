@@ -246,6 +246,10 @@ call plug#end()
 	map <leader>d :r!date +"\%Y-\%m-\%dT\%H:\%M:\%S"<CR>kJ
 	map <leader>в :r!date +"\%Y-\%m-\%dT\%H:\%M:\%S"<CR>kJ
 
+" Hack to open all folds in current scope recursively
+	nmap <leader>z zCzO
+	nmap <leader>я zCzO
+
 " LSP
 	if has('nvim-0.6')
 		set omnifunc=v:lua.vim.lsp.omnifunc
