@@ -25,6 +25,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'https://gitlab.com/HiPhish/info.vim'
 	Plug 'rhysd/git-messenger.vim'
 	Plug 'tpope/vim-ragtag'
+	Plug 'mmarchini/bpftrace.vim'
 	if has('nvim-0.6')
 		Plug 'neovim/nvim-lspconfig'
 		Plug 'ojroques/nvim-lspfuzzy'
