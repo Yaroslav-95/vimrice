@@ -295,7 +295,7 @@ call plug#end()
 
 " File format preferences
 	" MFing neovim overrding my omnifunc with whatever ccomplete is
-	autocmd FileType c,ch,header,cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	autocmd FileType c,ch,header,cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc fdm=syntax
 	" No, Rust, spaces is not superior to tabs, 100 lines is too much
 	autocmd FileType rust setlocal noet ci pi sts=0 ts=4 sw=4 tw=80
 	autocmd FileType meson setlocal noet ci pi sts=0 ts=4 sw=4 tw=80
