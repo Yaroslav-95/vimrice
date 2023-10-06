@@ -26,6 +26,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'rhysd/git-messenger.vim'
 	Plug 'tpope/vim-ragtag'
 	Plug 'mmarchini/bpftrace.vim'
+	Plug 'junkblocker/git-time-lapse'
 	if has('nvim-0.6')
 		Plug 'neovim/nvim-lspconfig'
 		Plug 'ojroques/nvim-lspfuzzy'
